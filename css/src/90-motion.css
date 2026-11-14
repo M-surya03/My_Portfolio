@@ -1,0 +1,193 @@
+/* ==========================================================================
+   90-motion.css — All animation; gated behind prefers-reduced-motion
+   Dependencies: 00-tokens.css
+   H3: ALL motion wrapped; content visible without animation
+   ========================================================================== */
+
+@layer motion {
+
+  /* -------------------------------------------------------------------------
+     Pattern C: Scroll-driven progress bar (gated)
+     Gated: animation-timeline: scroll() — Chrome 115+, FF 110+
+     ------------------------------------------------------------------------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll(root)) {
+
+      .progress {
+        animation: progress-grow linear both;
+        animation-timeline: scroll(root);
+      }
+
+      @keyframes progress-grow {
+        from { scale: 0 1; }
+        to   { scale: 1 1; }
+      }
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Pattern C: Scroll-driven section reveal
+     Gated: animation-timeline: view()
+     H3: Elements are fully visible by default; animation is additive
+     ------------------------------------------------------------------------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+
+      .reveal {
+        animation: reveal-rise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+      }
+
+      @keyframes reveal-rise {
+        from {
+          opacity: 0;
+          translate: 0 1.5rem;
+        }
+        to {
+          opacity: 1;
+          translate: 0 0;
+        }
+      }
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     @starting-style: hero entrance (gated)
+     Gated: @starting-style — Chrome 117+, Safari 17.5+
+     ------------------------------------------------------------------------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (selector(@starting-style)) {
+      .hero__inner {
+        transition: opacity var(--dur-slow) var(--ease-out),
+                    translate var(--dur-slow) var(--ease-out);
+
+        @starting-style {
+          opacity: 0;
+          translate: 0 1rem;
+        }
+      }
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Card hover lift (always on; respects prefers-reduced-motion)
+     ------------------------------------------------------------------------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .card {
+      transition:
+        box-shadow var(--dur-fast) var(--ease-out),
+        translate  var(--dur-fast) var(--ease-out),
+        border-color var(--dur-fast) var(--ease-out);
+    }
+
+    .card:hover,
+    .card:focus-within {
+      translate: 0 -2px;
+      box-shadow: var(--shadow-lift);
+      border-color: var(--accent);
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Animated focus ring
+     ------------------------------------------------------------------------- */
+  @media (prefers-reduced-motion: no-preference) {
+    :focus-visible {
+      transition: outline-offset var(--dur-fast) var(--ease-out);
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Pattern E: details/summary animation (gated)
+     Gated: ::details-content — Safari 18.2+, Chrome 131+
+     ------------------------------------------------------------------------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (selector(details::details-content)) {
+      details::details-content {
+        transition: block-size var(--dur-slow) var(--ease-out),
+                    opacity   var(--dur-slow) var(--ease-out);
+        overflow: clip;
+        block-size: 0;
+        opacity: 0;
+      }
+      details[open]::details-content {
+        block-size: auto;
+        opacity: 1;
+      }
+
+      /* Gated: interpolate-size for auto keyword */
+      @supports (interpolate-size: allow-keywords) {
+        :root { interpolate-size: allow-keywords; }
+      }
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Pattern F: mobile nav entrance (@starting-style)
+     Gated: @starting-style + popover
+     ------------------------------------------------------------------------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (selector(:popover-open)) {
+      #site-nav:popover-open {
+        transition:
+          translate var(--dur-slow) var(--ease-out),
+          opacity   var(--dur-base) var(--ease-out);
+      }
+
+      @supports (selector(@starting-style)) {
+        @starting-style {
+          #site-nav:popover-open {
+            translate: 0 -1rem;
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Optional delight: @property animated gradient on accent text
+     Gated: @property — Chrome 85+, FF 128+, Safari 16.4+
+     Fallback: solid accent colour (always rendered)
+     ------------------------------------------------------------------------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (background: linear-gradient(0deg, red, blue)) {
+      @property --hero-angle {
+        syntax: "<angle>";
+        inherits: false;
+        initial-value: 135deg;
+      }
+
+      .hero__name {
+        background: linear-gradient(
+          var(--hero-angle),
+          var(--accent) 0%,
+          light-dark(var(--_blue-700), var(--_blue-400)) 50%,
+          var(--accent) 100%
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        /* WHY: fallback if clip not supported */
+        color: var(--accent);
+        animation: hero-gradient 6s linear infinite;
+      }
+
+      @keyframes hero-gradient {
+        to { --hero-angle: 495deg; }
+      }
+    }
+  }
+
+  /* Fallback: when motion is reduced or @property unsupported, use solid text */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__name {
+      color: var(--text);
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+    }
+  }
+
+} /* end @layer motion */

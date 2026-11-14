@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindMate — Personalized AI Wellness Agent | Surya M</title>
+  <meta name="description" content="Case study: MindMate — a personalized mental-health AI agent built during the DigiDARA internship, combining RAG pipelines, Pinecone vector memory, and agentic workflows.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfaf7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0e1116">
+  <link rel="canonical" href="https://surya-m.dev/projects/mindmate.html">
+  <meta property="og:type"  content="article">
+  <meta property="og:title" content="MindMate — Personalized AI Wellness Agent">
+  <meta property="og:description" content="Mental-health AI agent with RAG pipelines, Pinecone vector memory, and agentic workflows for context-aware mood tracking.">
+  <meta property="og:url"   content="https://surya-m.dev/projects/mindmate.html">
+  <meta property="og:image" content="https://surya-m.dev/assets/og-image.svg">
+  <meta property="og:image:alt" content="MindMate case study — Surya M">
+  <meta name="twitter:card"  content="summary_large_image">
+  <meta name="twitter:title" content="MindMate — Surya M">
+  <meta name="twitter:image" content="https://surya-m.dev/assets/og-image.svg">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/styles.min.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://surya-m.dev/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://surya-m.dev/#work" },
+          { "@type": "ListItem", "position": 3, "name": "MindMate", "item": "https://surya-m.dev/projects/mindmate.html" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "MindMate",
+        "description": "Personalized AI mental health support agent combining RAG pipelines and agentic workflows.",
+        "applicationCategory": "HealthApplication",
+        "author": { "@type": "Person", "name": "Surya M" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <input type="radio" id="theme-auto"  name="theme" checked class="vh">
+  <input type="radio" id="theme-light" name="theme"         class="vh">
+  <input type="radio" id="theme-dark"  name="theme"         class="vh">
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="site-header" role="banner">
+    <div class="wrap site-header__inner">
+      <a href="../index.html" class="wordmark" aria-label="Surya M — home">surya_m</a>
+      <div class="header-controls">
+        <button class="menu-btn no-print" popovertarget="site-nav" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Menu
+        </button>
+        <nav id="site-nav" popover aria-label="Primary navigation">
+          <ul class="site-nav__list">
+            <li><a href="../index.html#work"       class="site-nav__link">Work</a></li>
+            <li><a href="../index.html#experience" class="site-nav__link">Experience</a></li>
+            <li><a href="../index.html#skills"     class="site-nav__link">Skills</a></li>
+            <li><a href="../index.html#about"      class="site-nav__link">About</a></li>
+            <li><a href="../index.html#contact"    class="site-nav__link">Contact</a></li>
+          </ul>
+        </nav>
+        <fieldset class="theme-switch no-print" aria-label="Colour theme">
+          <legend class="vh">Colour theme</legend>
+          <input type="radio" id="theme-auto-btn"  name="theme-btn" value="auto" checked>
+          <label for="theme-auto-btn" title="Auto"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/><path d="M8 2V1M8 15v-1M2 8H1M15 8h-1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span class="vh">Auto</span></label>
+          <input type="radio" id="theme-light-btn" name="theme-btn" value="light">
+          <label for="theme-light-btn" title="Light"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span class="vh">Light</span></label>
+          <input type="radio" id="theme-dark-btn"  name="theme-btn" value="dark">
+          <label for="theme-dark-btn" title="Dark"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5Z" fill="currentColor"/></svg><span class="vh">Dark</span></label>
+        </fieldset>
+      </div>
+    </div>
+  </header>
+
+  <style>
+    :root:has(#theme-light-btn:checked) { color-scheme: light; }
+    :root:has(#theme-dark-btn:checked)  { color-scheme: dark; }
+  </style>
+
+  <main id="main" tabindex="-1">
+
+    <!-- SRC: resume.projects[MindMate], resume.experience[DigiDARA] -->
+    <header class="cs-hero">
+      <div class="wrap">
+        <a href="../index.html#work" class="cs-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          All projects
+        </a>
+        <span class="cs-hero__tag">03 · Featured · DigiDARA Internship · 2025</span>
+        <h1 class="cs-hero__title">MindMate — Personalized AI Wellness Agent</h1>
+        <p class="cs-hero__summary">
+          Built during a 3-month Generative AI internship at DigiDARA Technologies:
+          a personalized mental-health AI combining RAG pipelines, Pinecone vector
+          memory, and agentic workflows for empathetic, context-aware support.
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap" style="padding-block:var(--sp-10);">
+
+      <!-- SRC: resume.projects[MindMate] + resume.experience[DigiDARA] -->
+      <dl class="cs-meta">
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Role</dt>
+          <dd class="cs-meta__value">Generative AI Intern — sole developer</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Timeline</dt>
+          <dd class="cs-meta__value">Jul 2025 (3-month internship)</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Stack</dt>
+          <dd class="cs-meta__value">Python · LangChain · HuggingFace · Pinecone · MongoDB · RAG</dd>
+        </div>
+        <div class="cs-meta__item">
+          <!-- TODO(resume.projects.mindmate.github): Add GitHub URL when available -->
+          <dt class="cs-meta__label">Links</dt>
+          <dd class="cs-meta__value"><span style="color:var(--muted);">GitHub — to be added</span></dd>
+        </div>
+      </dl>
+
+      <div class="tldr">
+        <p class="tldr__heading">TL;DR</p>
+        <ul>
+          <li>Personalized mental-health AI agent using all-MiniLM-L6-v2 embeddings + Pinecone for persistent user memory across sessions.</li>
+          <li>Agentic workflows for mood tracking, guided relaxation, and wellness prompts via prompt engineering and retrieval-based reasoning.</li>
+          <li>MongoDB stores session history and mood data; responses are contextually grounded — not generic chatbot replies.</li>
+        </ul>
+      </div>
+
+      <article class="prose">
+
+        <h2>Problem</h2>
+        <!-- SRC: resume.projects[MindMate] bullets -->
+        <p>
+          Generic chatbots for mental wellness provide stateless, one-size-fits-all
+          responses. Without session memory or retrieval of a user's history, they
+          cannot build on previous conversations — every session starts from scratch,
+          which is fundamentally unsuitable for a support context where continuity
+          and empathy are essential.
+        </p>
+
+        <h2>Approach</h2>
+
+        <figure class="arch-diagram">
+          <svg viewBox="0 0 680 220" width="680" height="220" fill="none" xmlns="http://www.w3.org/2000/svg"
+               role="img" aria-labelledby="mm-diag-title mm-diag-desc">
+            <title id="mm-diag-title">MindMate architecture diagram</title>
+            <desc id="mm-diag-desc">
+              User message enters the agent. The agent routes to Mood Tracker, Relaxation Guide,
+              or Wellness Prompts workflows. All workflows access Pinecone (vector memory) and
+              MongoDB (session history). LLM generates a context-aware, empathetic response.
+            </desc>
+            <!-- User -->
+            <rect x="10" y="80" width="100" height="60" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="60" y="106" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">USER</text>
+            <text x="60" y="122" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Message</text>
+            <!-- Arrow -->
+            <path d="M110 110h30" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M136 105l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+            <!-- Agent -->
+            <rect x="140" y="60" width="120" height="100" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="200" y="85"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">AGENT</text>
+            <text x="200" y="101" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Route intent</text>
+            <text x="200" y="115" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Mood Tracker</text>
+            <text x="200" y="129" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Relaxation</text>
+            <text x="200" y="143" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Wellness prompt</text>
+            <!-- Arrow -->
+            <path d="M260 110h30" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M286 105l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+            <!-- Memory -->
+            <rect x="290" y="60" width="130" height="100" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="355" y="88"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">MEMORY</text>
+            <text x="355" y="104" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Pinecone</text>
+            <text x="355" y="118" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">MiniLM embeddings</text>
+            <text x="355" y="132" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">MongoDB session</text>
+            <text x="355" y="146" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Mood history</text>
+            <!-- Arrow -->
+            <path d="M420 110h30" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M446 105l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+            <!-- LLM -->
+            <rect x="450" y="70" width="130" height="80" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="515" y="96"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">LLM</text>
+            <text x="515" y="112" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Context-aware</text>
+            <text x="515" y="126" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Empathetic reply</text>
+            <text x="515" y="140" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Grounded in history</text>
+            <!-- Arrow back to user -->
+            <path d="M580 110h60M640 110l0 60M640 170H60M60 170l0-10" stroke="var(--muted,#a3adbb)" stroke-width="1" stroke-dasharray="4 2" stroke-linecap="round" fill="none"/>
+            <text x="350" y="195" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">Response loops back to user; interaction stored in MongoDB + Pinecone</text>
+          </svg>
+          <figcaption>MindMate: agentic workflow with persistent vector memory — each session builds on prior user history.</figcaption>
+        </figure>
+
+        <p>
+          MindMate uses all-MiniLM-L6-v2 embeddings (via HuggingFace) to encode
+          user messages and prior session summaries into Pinecone — enabling semantic
+          retrieval of relevant past interactions for every new message.
+        </p>
+        <p>
+          The agent routes messages to specialised workflows: mood tracking, guided
+          relaxation, and wellness prompts. Each workflow retrieves relevant history
+          from Pinecone and constructs a grounded, empathetic prompt. MongoDB stores
+          raw session transcripts and mood-related metadata for auditability.
+        </p>
+
+        <h2>Outcome</h2>
+        <!-- SRC: resume.experience[DigiDARA] -->
+        <p>
+          MindMate was developed as the capstone project of the DigiDARA internship,
+          demonstrating practical LLM application in a healthcare context. The agent
+          maintained conversation continuity across multiple sessions — something
+          stateless chatbots cannot achieve.
+        </p>
+        <!-- TODO(resume.mindmate.metrics): Add quantitative metrics if available (response relevance scores, session retention, etc.) -->
+
+        <h2>What I learned</h2>
+        <ul>
+          <li>Vector memory (Pinecone) fundamentally changes the user experience compared to in-context window history — session persistence across days is architecturally different from long-context prompting.</li>
+          <li>Agentic intent routing (mood vs. relaxation vs. wellness) required careful workflow design to avoid mis-classification on ambiguous inputs.</li>
+          <li>Healthcare AI requires explicit scope constraints — the agent was designed to redirect clinical concerns to professional resources, not replace them.</li>
+        </ul>
+
+      </article>
+
+      <nav class="pager" aria-label="Case study navigation">
+        <a href="syllabex.html" class="pager__link">
+          <span class="pager__dir">← Previous</span>
+          <span class="pager__title">Syllabex — Syllabus-Grounded Learning Assistant</span>
+        </a>
+        <a href="sewasetu.html" class="pager__link pager__link--next">
+          <span class="pager__dir">Next →</span>
+          <span class="pager__title">SewaSetu — AI Pension Portal</span>
+        </a>
+      </nav>
+
+      <section aria-labelledby="cs-contact-mm" style="padding-block:var(--sp-12);text-align:center;border-block-start:1px solid var(--border);">
+        <h2 id="cs-contact-mm" style="font-size:var(--text-2xl);margin-block-end:var(--sp-4);">Want to build production-grade AI?</h2>
+        <p style="color:var(--muted);margin-block-end:var(--sp-6);max-inline-size:44ch;margin-inline:auto;">Open to AI Engineer and Generative AI internship roles.</p>
+        <a href="mailto:aitech.surya24@gmail.com" class="btn btn--primary">Get in touch</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap site-footer__inner">
+      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> <strong>Surya M</strong>.</p>
+      <span class="site-footer__meta">Last updated: <time datetime="2026-11">November 2026</time></span>
+      <a href="../index.html" class="site-footer__back">← All projects</a>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+/* ==========================================================================
+   main.css — Entry point; @layer order + @import of modules
+   Build: npx lightningcss-cli --minify --bundle css/src/main.css -o css/styles.min.css
+   ========================================================================== */
+
+/* WHY: Layer order declaration ensures cascade priority is explicit */
+@layer reset, tokens, base, layout, components, motion, utilities;
+
+/* Core */
+@import "00-tokens.css"    layer(tokens);
+@import "01-reset.css"     layer(reset);
+@import "02-base.css"      layer(base);
+@import "03-layout.css"    layer(layout);
+
+/* Components */
+@import "components/header.css"       layer(components);
+@import "components/nav-popover.css"  layer(components);
+@import "components/theme-switch.css" layer(components);
+@import "components/button.css"       layer(components);
+@import "components/chip.css"         layer(components);
+@import "components/card.css"         layer(components);
+@import "components/filter.css"       layer(components);
+@import "components/proof-strip.css"  layer(components);
+@import "components/timeline.css"     layer(components);
+@import "components/skills.css"       layer(components);
+@import "components/case-study.css"   layer(components);
+@import "components/footer.css"       layer(components);
+
+/* Page-specific sections */
+@import "components/hero.css"         layer(components);
+
+/* Motion (gated) */
+@import "90-motion.css"    layer(motion);
+
+/* Utilities (highest specificity in layer) */
+@import "99-utilities.css" layer(utilities);

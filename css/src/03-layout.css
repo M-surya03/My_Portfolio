@@ -1,0 +1,140 @@
+/* ==========================================================================
+   03-layout.css — Page grid, section wrappers, containers
+   Dependencies: 00-tokens.css
+   ========================================================================== */
+
+@layer layout {
+
+  /* -------------------------------------------------------------------------
+     Wrapper — centred max-width container
+     ------------------------------------------------------------------------- */
+  .wrap {
+    inline-size: min(100%, var(--max-w));
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* -------------------------------------------------------------------------
+     12-column CSS grid
+     ------------------------------------------------------------------------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    gap: var(--sp-6);
+  }
+
+  /* -------------------------------------------------------------------------
+     Page sections
+     ------------------------------------------------------------------------- */
+  .section {
+    padding-block: var(--sp-20) var(--sp-24);
+  }
+
+  .section--tight {
+    padding-block: var(--sp-12);
+  }
+
+  /* -------------------------------------------------------------------------
+     Section header (numbered label + heading)
+     ------------------------------------------------------------------------- */
+  .section__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-block-end: var(--sp-4);
+  }
+
+  .section__eyebrow::after {
+    content: "";
+    flex: 1;
+    block-size: 1px;
+    background: var(--border);
+  }
+
+  .section__heading {
+    margin-block-end: var(--sp-12);
+  }
+
+  /* -------------------------------------------------------------------------
+     Two-column responsive layout
+     ------------------------------------------------------------------------- */
+  .cols-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+
+  @media (min-width: 48rem) {
+    .cols-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Sidebar layout (content + aside)
+     ------------------------------------------------------------------------- */
+  .layout-sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-8);
+  }
+
+  @media (min-width: 60rem) {
+    .layout-sidebar {
+      grid-template-columns: 2fr 1fr;
+      align-items: start;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Prose (case study body)
+     ------------------------------------------------------------------------- */
+  .prose {
+    max-inline-size: var(--measure);
+  }
+
+  .prose > * + * {
+    margin-block-start: var(--sp-5);
+  }
+
+  .prose h2 {
+    margin-block-start: var(--sp-10);
+    margin-block-end: var(--sp-4);
+    font-size: var(--text-2xl);
+  }
+
+  .prose h3 {
+    margin-block-start: var(--sp-8);
+    margin-block-end: var(--sp-3);
+    font-size: var(--text-xl);
+  }
+
+  .prose ul {
+    padding-inline-start: var(--sp-5);
+    list-style: disc;
+  }
+
+  .prose li + li {
+    margin-block-start: var(--sp-2);
+  }
+
+  /* -------------------------------------------------------------------------
+     Main landmark
+     ------------------------------------------------------------------------- */
+  main {
+    /* Perf: content-visibility for below-fold sections applied per section */
+    outline: none; /* WHY: skip link target, shouldn't show focus ring */
+  }
+
+  /* -------------------------------------------------------------------------
+     Content-visibility optimisation for off-screen sections
+     Gated: content-visibility is well-supported but explicit contain needed
+     ------------------------------------------------------------------------- */
+  @supports (content-visibility: auto) {
+    .cv-auto {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 40rem;
+    }
+  }
+
+} /* end @layer layout */

@@ -1,0 +1,129 @@
+/* ==========================================================================
+   card.css — Project cards with Pattern D (sibling-dimming) + Pattern H (sticky-stack)
+   Dependencies: 00-tokens.css
+   ========================================================================== */
+
+@layer components {
+
+  /* -------------------------------------------------------------------------
+     Cards grid
+     ------------------------------------------------------------------------- */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-6);
+    list-style: none;
+  }
+
+  @media (min-width: 36rem) {
+    .cards {
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Card
+     ------------------------------------------------------------------------- */
+  .card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-6);
+    text-decoration: none;
+    color: inherit;
+    /* WHY: overflow hidden clips the accent top-border on hover */
+    overflow: hidden;
+    position: relative;
+    /* 2px lift + accent border on hover (defined in 90-motion.css) */
+  }
+
+  /* Accent top bar on featured card */
+  .card--featured::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    block-size: 3px;
+    background: var(--accent);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .card__eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent);
+    letter-spacing: var(--tracking-wide);
+    margin-block-end: var(--sp-2);
+    text-transform: uppercase;
+  }
+
+  .card__title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    line-height: var(--leading-snug);
+    margin-block-end: var(--sp-3);
+    color: var(--text);
+  }
+
+  .card__outcome {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    line-height: var(--leading-normal);
+    flex: 1;
+    margin-block-end: var(--sp-5);
+  }
+
+  .card__chips {
+    margin-block-end: var(--sp-5);
+  }
+
+  .card__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    margin-block-start: auto;
+  }
+
+  /* -------------------------------------------------------------------------
+     Pattern D: Sibling-dimming focus — hover: hover guard
+     A11y: dimmed cards still at ~6:1 contrast (0.75 opacity on muted text)
+     ------------------------------------------------------------------------- */
+  @media (hover: hover) {
+    .cards:has(.card:is(:hover, :focus-within)) .card:not(:is(:hover, :focus-within)) {
+      opacity: 0.72;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Pattern H: Sticky-stack project cards (tall desktop viewports)
+     Disabled when a filter is active (not #f-all) — handled in filter.css
+     ------------------------------------------------------------------------- */
+  @media (min-width: 60rem) and (min-height: 42rem) {
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .stack > .card {
+      position: sticky;
+      top: calc(var(--header-h) + var(--sp-4));
+      margin-block-end: var(--sp-6);
+    }
+
+    .stack > .card:nth-child(2) {
+      top: calc(var(--header-h) + var(--sp-8));
+    }
+
+    .stack > .card:nth-child(3) {
+      top: calc(var(--header-h) + var(--sp-12));
+    }
+
+    .stack > .card:nth-child(4) {
+      top: calc(var(--header-h) + var(--sp-16));
+    }
+  }
+
+} /* end @layer components */

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Syllabex — Syllabus-Grounded Learning Assistant | Surya M</title>
+  <meta name="description" content="Case study: Syllabex — a controlled RAG system where faculty upload textbooks and answer keys to ensure every AI-generated answer aligns with institutional syllabus content.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfaf7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0e1116">
+  <link rel="canonical" href="https://surya-m.dev/projects/syllabex.html">
+  <meta property="og:type"  content="article">
+  <meta property="og:title" content="Syllabex — Syllabus-Grounded Learning Assistant">
+  <meta property="og:description" content="Controlled RAG: faculty upload textbooks; every student answer aligns with institution-approved syllabus content.">
+  <meta property="og:url"   content="https://surya-m.dev/projects/syllabex.html">
+  <meta property="og:image" content="https://surya-m.dev/assets/og-image.svg">
+  <meta property="og:image:alt" content="Syllabex case study — Surya M">
+  <meta name="twitter:card"  content="summary_large_image">
+  <meta name="twitter:title" content="Syllabex — Surya M">
+  <meta name="twitter:image" content="https://surya-m.dev/assets/og-image.svg">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/styles.min.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://surya-m.dev/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://surya-m.dev/#work" },
+          { "@type": "ListItem", "position": 3, "name": "Syllabex", "item": "https://surya-m.dev/projects/syllabex.html" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Syllabex",
+        "description": "Syllabus-grounded RAG learning assistant for academic institutions.",
+        "applicationCategory": "EducationalApplication",
+        "author": { "@type": "Person", "name": "Surya M" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <input type="radio" id="theme-auto"  name="theme" checked class="vh">
+  <input type="radio" id="theme-light" name="theme"         class="vh">
+  <input type="radio" id="theme-dark"  name="theme"         class="vh">
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="site-header" role="banner">
+    <div class="wrap site-header__inner">
+      <a href="../index.html" class="wordmark" aria-label="Surya M — home">surya_m</a>
+      <div class="header-controls">
+        <button class="menu-btn no-print" popovertarget="site-nav" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Menu
+        </button>
+        <nav id="site-nav" popover aria-label="Primary navigation">
+          <ul class="site-nav__list">
+            <li><a href="../index.html#work"       class="site-nav__link">Work</a></li>
+            <li><a href="../index.html#experience" class="site-nav__link">Experience</a></li>
+            <li><a href="../index.html#skills"     class="site-nav__link">Skills</a></li>
+            <li><a href="../index.html#about"      class="site-nav__link">About</a></li>
+            <li><a href="../index.html#contact"    class="site-nav__link">Contact</a></li>
+          </ul>
+        </nav>
+        <fieldset class="theme-switch no-print" aria-label="Colour theme">
+          <legend class="vh">Colour theme</legend>
+          <input type="radio" id="theme-auto-btn"  name="theme-btn" value="auto" checked>
+          <label for="theme-auto-btn" title="Auto"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/><path d="M8 2V1M8 15v-1M2 8H1M15 8h-1M4.1 4.1l-.7-.7M12.6 12.6l-.7-.7M4.1 11.9l-.7.7M12.6 3.4l-.7.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span class="vh">Auto</span></label>
+          <input type="radio" id="theme-light-btn" name="theme-btn" value="light">
+          <label for="theme-light-btn" title="Light"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v1M8 14v1M1 8h1M14 8h1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span class="vh">Light</span></label>
+          <input type="radio" id="theme-dark-btn"  name="theme-btn" value="dark">
+          <label for="theme-dark-btn" title="Dark"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5Z" fill="currentColor"/></svg><span class="vh">Dark</span></label>
+        </fieldset>
+      </div>
+    </div>
+  </header>
+
+  <style>
+    :root:has(#theme-light-btn:checked) { color-scheme: light; }
+    :root:has(#theme-dark-btn:checked)  { color-scheme: dark; }
+  </style>
+
+  <main id="main" tabindex="-1">
+
+    <!-- SRC: resume.projects[Syllabex] -->
+    <header class="cs-hero">
+      <div class="wrap">
+        <a href="../index.html#work" class="cs-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          All projects
+        </a>
+        <span class="cs-hero__tag">02 · Featured · 2026</span>
+        <h1 class="cs-hero__title">Syllabex — Syllabus-Grounded Learning Assistant</h1>
+        <p class="cs-hero__summary">
+          A controlled RAG system that ensures every AI-generated answer in an academic
+          setting aligns with institution-approved syllabus content — solving the AI
+          hallucination problem in education without banning AI entirely.
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap" style="padding-block:var(--sp-10);">
+
+      <!-- SRC: resume.projects[Syllabex] -->
+      <dl class="cs-meta">
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Role</dt>
+          <dd class="cs-meta__value">Sole developer</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Timeline</dt>
+          <dd class="cs-meta__value">2026</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Stack</dt>
+          <dd class="cs-meta__value">Python · LLMs · RAG · Vector DB</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Links</dt>
+          <!-- TODO(resume.projects.syllabex.github): Add GitHub URL when available -->
+          <dd class="cs-meta__value"><span style="color:var(--muted);">GitHub — to be added</span></dd>
+        </div>
+      </dl>
+
+      <div class="tldr">
+        <p class="tldr__heading">TL;DR</p>
+        <ul>
+          <li>Faculty upload textbooks and answer keys; content is embedded into a RAG pipeline — no unapproved content reaches students.</li>
+          <li>Students receive consistent, evaluation-friendly answers aligned with institutional answer keys.</li>
+          <li>Eliminates both extremes: rigid AI bans and unpredictable open-AI usage in academic contexts.</li>
+        </ul>
+      </div>
+
+      <article class="prose">
+
+        <h2>Problem</h2>
+        <!-- SRC: resume.projects[Syllabex] bullets verbatim → rewritten for scanning -->
+        <p>
+          Students increasingly rely on general AI tools like ChatGPT for academic
+          study. The problem: these tools produce confident, non-syllabus answers —
+          contradicting institution-approved content, causing evaluation mismatches,
+          and creating academic integrity issues that educators cannot reliably detect.
+        </p>
+        <p>
+          Institutions faced a false binary: ban AI entirely (removing a learning tool)
+          or allow open AI use (accepting unpredictable, non-standard answers that
+          undermine fair evaluation).
+        </p>
+
+        <h2>Constraints</h2>
+        <ul>
+          <li>Answers must be traceable exclusively to faculty-uploaded documents.</li>
+          <li>System must be operable by non-technical faculty (simple upload interface).</li>
+          <li>Must be evaluation-consistent: all students get structurally equivalent answers for the same question.</li>
+        </ul>
+
+        <h2>Approach</h2>
+
+        <!-- Architecture diagram -->
+        <figure class="arch-diagram">
+          <svg viewBox="0 0 680 200" width="680" height="200" fill="none" xmlns="http://www.w3.org/2000/svg"
+               role="img" aria-labelledby="sx-diag-title sx-diag-desc">
+            <title id="sx-diag-title">Syllabex architecture diagram</title>
+            <desc id="sx-diag-desc">
+              Faculty upload textbooks and answer keys. Documents are chunked and embedded via a
+              RAG pipeline into a vector database. Student queries retrieve only institution-approved
+              content; the LLM generates a syllabus-aligned response.
+            </desc>
+            <!-- Faculty upload -->
+            <rect x="10" y="60" width="130" height="80" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="75" y="90"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">FACULTY</text>
+            <text x="75" y="106" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Textbooks</text>
+            <text x="75" y="120" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Answer keys</text>
+            <text x="75" y="134" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Notes</text>
+            <!-- Arrow -->
+            <path d="M140 100h40" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M176 95l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+            <!-- RAG Pipeline -->
+            <rect x="180" y="60" width="160" height="80" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="260" y="90"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">RAG PIPELINE</text>
+            <text x="260" y="106" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Chunk · Embed</text>
+            <text x="260" y="120" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Vector DB</text>
+            <text x="260" y="134" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Syllabus index</text>
+            <!-- Arrow -->
+            <path d="M340 100h40" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M376 95l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+            <!-- LLM -->
+            <rect x="380" y="60" width="140" height="80" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="450" y="90"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">LLM RESPONSE</text>
+            <text x="450" y="106" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Retrieve context</text>
+            <text x="450" y="120" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Generate answer</text>
+            <text x="450" y="134" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Syllabus-aligned</text>
+            <!-- Arrow -->
+            <path d="M520 100h40" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M556 95l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+            <!-- Student -->
+            <rect x="560" y="70" width="110" height="60" rx="8" stroke="currentColor" stroke-width="1" stroke-dasharray="4 2" fill="none"/>
+            <text x="615" y="98"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor">Student</text>
+            <text x="615" y="114" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor">Consistent answer</text>
+          </svg>
+          <figcaption>Syllabex: faculty-controlled RAG pipeline — only institution-approved content reaches the LLM context window.</figcaption>
+        </figure>
+
+        <p>
+          Faculty upload course materials (PDFs, DOCX files) through a simple admin
+          interface. Documents are chunked, embedded, and stored in a vector database
+          scoped to the specific course.
+        </p>
+        <p>
+          When a student queries the system, retrieval is bounded to that course's
+          vector index — the LLM never has access to general internet knowledge for
+          content outside the uploaded corpus. Answers are generated from retrieved
+          syllabus passages and formatted to match evaluation-expected structure.
+        </p>
+
+        <h2>Outcome</h2>
+        <p>
+          Syllabex demonstrated consistent, syllabus-aligned answers across all test
+          queries — no factually contradictory content, no information outside the
+          uploaded corpus.
+        </p>
+        <p>
+          Qualitatively: the strict retrieval boundary eliminated the category of
+          "correct-but-off-syllabus" answers that cause evaluation mismatch.
+        </p>
+        <!-- TODO(resume.syllabex.metrics): Add quantitative evaluation metrics if available -->
+
+        <h2>What I learned</h2>
+        <ul>
+          <li>RAG retrieval boundary (course-scoped index) is architecturally simpler and more reliable than prompt-based restrictions.</li>
+          <li>Chunking strategy matters significantly: semantic chunking by section outperformed fixed-token chunking for academic text.</li>
+        </ul>
+
+      </article>
+
+      <nav class="pager" aria-label="Case study navigation">
+        <a href="floatchat.html" class="pager__link">
+          <span class="pager__dir">← Previous</span>
+          <span class="pager__title">FloatChat — Oceanographic AI Platform</span>
+        </a>
+        <a href="mindmate.html" class="pager__link pager__link--next">
+          <span class="pager__dir">Next →</span>
+          <span class="pager__title">MindMate — Personalized AI Wellness Agent</span>
+        </a>
+      </nav>
+
+      <section aria-labelledby="cs-contact-sx" style="padding-block:var(--sp-12);text-align:center;border-block-start:1px solid var(--border);">
+        <h2 id="cs-contact-sx" style="font-size:var(--text-2xl);margin-block-end:var(--sp-4);">Like what you see?</h2>
+        <p style="color:var(--muted);margin-block-end:var(--sp-6);max-inline-size:44ch;margin-inline:auto;">Open to AI Engineer and Generative AI roles.</p>
+        <a href="mailto:aitech.surya24@gmail.com" class="btn btn--primary">Get in touch</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap site-footer__inner">
+      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> <strong>Surya M</strong>.</p>
+      <span class="site-footer__meta">Last updated: <time datetime="2026-11">November 2026</time></span>
+      <a href="../index.html" class="site-footer__back">← All projects</a>
+    </div>
+  </footer>
+
+</body>
+</html>

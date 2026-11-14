@@ -1,0 +1,170 @@
+/* ==========================================================================
+   nav-popover.css — Primary nav (desktop inline / mobile popover)
+   Pattern F: Popover API progressive enhancement
+   Dependencies: 00-tokens.css
+   ========================================================================== */
+
+@layer components {
+
+  /* -------------------------------------------------------------------------
+     Primary nav — desktop (force inline, neutralise UA popover styles)
+     WHY: We use the Popover API for mobile but need desktop to always show
+     ------------------------------------------------------------------------- */
+  @media (min-width: 48rem) {
+    .menu-btn {
+      display: none; /* hide hamburger on desktop */
+    }
+
+    /* Neutralise UA popover default styles on desktop */
+    #site-nav {
+      display: flex !important;
+      position: static !important;
+      inset: auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      background: none !important;
+      overflow: visible !important;
+      block-size: auto !important;
+      inline-size: auto !important;
+      max-block-size: none !important;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Nav list
+     ------------------------------------------------------------------------- */
+  .site-nav__list {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-1);
+    list-style: none;
+  }
+
+  @media (max-width: 47.99rem) {
+    .site-nav__list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding-block: var(--sp-4);
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Nav links
+     ------------------------------------------------------------------------- */
+  .site-nav__link {
+    display: block;
+    padding-block: var(--sp-2);
+    padding-inline: var(--sp-3);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color var(--dur-fast) var(--ease-out),
+                background-color var(--dur-fast) var(--ease-out);
+    /* A11y: min 44px target on mobile */
+    min-block-size: 2.75rem;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (min-width: 48rem) {
+    .site-nav__link {
+      min-block-size: auto;
+      padding-block: var(--sp-1);
+    }
+  }
+
+  .site-nav__link:hover,
+  .site-nav__link:focus-visible {
+    color: var(--text);
+    background-color: var(--bg-subtle);
+  }
+
+  /* Current page (set via aria-current="page") */
+  .site-nav__link[aria-current="page"] {
+    color: var(--accent);
+  }
+
+  /* Pattern I: CSS scroll-spy (gated, Chromium-first) */
+  @supports (scroll-target-group: auto) {
+    .site-nav__list {
+      scroll-target-group: auto;
+    }
+
+    .site-nav__link:target-current {
+      color: var(--accent);
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Mobile popover panel
+     Fallback: if Popover API unsupported, nav renders inline (button hidden)
+     ------------------------------------------------------------------------- */
+  @supports (selector(:popover-open)) {
+
+    @media (max-width: 47.99rem) {
+      #site-nav {
+        position: fixed;
+        inset-block-start: var(--header-h);
+        inset-inline: 0;
+        inset-block-end: auto;
+        inline-size: 100%;
+        max-block-size: calc(100dvb - var(--header-h));
+        overflow-y: auto;
+        background-color: var(--bg-elevated);
+        border-block-end: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+        padding-block: var(--sp-2) var(--sp-6);
+        margin: 0;
+      }
+
+      /* Popover backdrop */
+      #site-nav::backdrop {
+        background: rgba(0 0 0 / 0.3);
+      }
+    }
+  }
+
+  /* Fallback: if Popover API not supported, hide the menu button */
+  @supports not (selector(:popover-open)) {
+    .menu-btn {
+      display: none !important;
+    }
+
+    #site-nav {
+      display: flex !important;
+      position: static !important;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Menu button
+     ------------------------------------------------------------------------- */
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-2);
+    min-inline-size: 2.75rem;
+    min-block-size: 2.75rem;
+    padding-inline: var(--sp-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: none;
+    cursor: pointer;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text);
+    transition: background-color var(--dur-fast) var(--ease-out),
+                border-color var(--dur-fast) var(--ease-out);
+  }
+
+  .menu-btn:hover {
+    background-color: var(--bg-subtle);
+  }
+
+} /* end @layer components */

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SewaSetu — AI-Powered Pension Portal | Surya M</title>
+  <meta name="description" content="Case study: SewaSetu — dual MCP server architecture (Citizen + Officer) for old-age pension workflows with JWT authorization boundaries and Docker Compose deployment.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfaf7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0e1116">
+  <link rel="canonical" href="https://surya-m.dev/projects/sewasetu.html">
+  <meta property="og:type"  content="article">
+  <meta property="og:title" content="SewaSetu — AI-Powered Pension Portal">
+  <meta property="og:description" content="Dual MCP server architecture for e-governance: separate Citizen and Officer authorization boundaries, JWT-validated tools, PostgreSQL, Docker Compose.">
+  <meta property="og:url"   content="https://surya-m.dev/projects/sewasetu.html">
+  <meta property="og:image" content="https://surya-m.dev/assets/og-image.svg">
+  <meta property="og:image:alt" content="SewaSetu case study — Surya M">
+  <meta name="twitter:card"  content="summary_large_image">
+  <meta name="twitter:title" content="SewaSetu — Surya M">
+  <meta name="twitter:image" content="https://surya-m.dev/assets/og-image.svg">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/styles.min.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://surya-m.dev/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://surya-m.dev/#work" },
+          { "@type": "ListItem", "position": 3, "name": "SewaSetu", "item": "https://surya-m.dev/projects/sewasetu.html" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "SewaSetu",
+        "description": "AI-powered e-governance platform for old-age pension workflows with dual MCP server architecture.",
+        "applicationCategory": "GovernmentApplication",
+        "author": { "@type": "Person", "name": "Surya M" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <input type="radio" id="theme-auto"  name="theme" checked class="vh">
+  <input type="radio" id="theme-light" name="theme"         class="vh">
+  <input type="radio" id="theme-dark"  name="theme"         class="vh">
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="site-header" role="banner">
+    <div class="wrap site-header__inner">
+      <a href="../index.html" class="wordmark" aria-label="Surya M — home">surya_m</a>
+      <div class="header-controls">
+        <button class="menu-btn no-print" popovertarget="site-nav" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Menu
+        </button>
+        <nav id="site-nav" popover aria-label="Primary navigation">
+          <ul class="site-nav__list">
+            <li><a href="../index.html#work"       class="site-nav__link">Work</a></li>
+            <li><a href="../index.html#experience" class="site-nav__link">Experience</a></li>
+            <li><a href="../index.html#skills"     class="site-nav__link">Skills</a></li>
+            <li><a href="../index.html#about"      class="site-nav__link">About</a></li>
+            <li><a href="../index.html#contact"    class="site-nav__link">Contact</a></li>
+          </ul>
+        </nav>
+        <fieldset class="theme-switch no-print" aria-label="Colour theme">
+          <legend class="vh">Colour theme</legend>
+          <input type="radio" id="theme-auto-btn"  name="theme-btn" value="auto" checked>
+          <label for="theme-auto-btn" title="Auto"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/></svg><span class="vh">Auto</span></label>
+          <input type="radio" id="theme-light-btn" name="theme-btn" value="light">
+          <label for="theme-light-btn" title="Light"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/></svg><span class="vh">Light</span></label>
+          <input type="radio" id="theme-dark-btn"  name="theme-btn" value="dark">
+          <label for="theme-dark-btn" title="Dark"><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5Z" fill="currentColor"/></svg><span class="vh">Dark</span></label>
+        </fieldset>
+      </div>
+    </div>
+  </header>
+
+  <style>
+    :root:has(#theme-light-btn:checked) { color-scheme: light; }
+    :root:has(#theme-dark-btn:checked)  { color-scheme: dark; }
+  </style>
+
+  <main id="main" tabindex="-1">
+
+    <!-- SRC: resume.projects[SewaSetu], G:\PROJECTS\sewasetu-ai-handout\README.md -->
+    <header class="cs-hero">
+      <div class="wrap">
+        <a href="../index.html#work" class="cs-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          All projects
+        </a>
+        <span class="cs-hero__tag">04 · Featured · 2026</span>
+        <h1 class="cs-hero__title">SewaSetu — AI-Powered Pension Portal</h1>
+        <p class="cs-hero__summary">
+          An e-governance platform for old-age pension workflows built on a dual
+          Model Context Protocol (MCP) architecture — separate Citizen and Officer
+          MCP servers with independent JWT authorization boundaries, backed by
+          PostgreSQL and deployed via Docker Compose.
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap" style="padding-block:var(--sp-10);">
+
+      <!-- SRC: G:\PROJECTS\sewasetu-ai-handout\README.md -->
+      <dl class="cs-meta">
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Role</dt>
+          <dd class="cs-meta__value">Sole developer</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Timeline</dt>
+          <dd class="cs-meta__value">2026</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Stack</dt>
+          <dd class="cs-meta__value">Python · FastAPI / Flask · MCP · PostgreSQL · Docker Compose · JWT / OAuth</dd>
+        </div>
+        <div class="cs-meta__item">
+          <!-- TODO(resume.projects.sewasetu.github): Add GitHub URL when available -->
+          <dt class="cs-meta__label">Links</dt>
+          <dd class="cs-meta__value"><span style="color:var(--muted);">GitHub — to be added</span></dd>
+        </div>
+      </dl>
+
+      <div class="tldr">
+        <p class="tldr__heading">TL;DR</p>
+        <ul>
+          <li>Citizen MCP (port 8001) and Officer MCP (port 8002) expose separate tool sets with independent JWT authorization — a citizen token cannot access officer-only tools.</li>
+          <li>Portal (Flask/FastAPI, port 8000) is the system of record; MCP servers call the portal API for authorized data access.</li>
+          <li>Evaluation dashboards per MCP server; Docker Compose orchestrates all services with PostgreSQL as shared data store.</li>
+        </ul>
+      </div>
+
+      <article class="prose">
+
+        <h2>Problem</h2>
+        <!-- SRC: sewasetu README.md -->
+        <p>
+          Public-welfare pension systems require strict role separation: a citizen
+          should only access their own application data, while a block officer needs
+          tools to list, review, and decide on pending applications. Existing
+          monolithic approaches mix these concerns — creating both security risks
+          and confusing user interfaces.
+        </p>
+
+        <h2>Approach</h2>
+
+        <figure class="arch-diagram">
+          <svg viewBox="0 0 680 260" width="680" height="260" fill="none" xmlns="http://www.w3.org/2000/svg"
+               role="img" aria-labelledby="ss-diag-title ss-diag-desc">
+            <title id="ss-diag-title">SewaSetu dual-MCP architecture</title>
+            <desc id="ss-diag-desc">
+              Citizen and citizen assistant connect via Streamable HTTP to Citizen MCP on port 8001.
+              Block officer and officer assistant connect to Officer MCP on port 8002.
+              Both MCP servers call the Portal (port 8000) API, which connects to PostgreSQL.
+              Portal issues JWT tokens; each MCP validates tokens against its own audience.
+            </desc>
+
+            <!-- Citizen side -->
+            <rect x="10" y="30" width="120" height="50" rx="6" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="70" y="52"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor" font-weight="600">CITIZEN</text>
+            <text x="70" y="68"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">+ AI assistant</text>
+
+            <!-- Citizen MCP -->
+            <rect x="170" y="20" width="140" height="70" rx="6" stroke="var(--accent,#0b57d0)" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="240" y="44"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">CITIZEN MCP</text>
+            <text x="240" y="60"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">:8001 · JWT audience=citizen</text>
+            <text x="240" y="76"  text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">check_eligibility · apply</text>
+
+            <!-- Arrow citizen → citizen mcp -->
+            <path d="M130 55h40" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M166 50l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+
+            <!-- Officer side -->
+            <rect x="10" y="180" width="120" height="50" rx="6" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="70" y="202" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9"  fill="currentColor" font-weight="600">OFFICER</text>
+            <text x="70" y="218" text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">+ AI assistant</text>
+
+            <!-- Officer MCP -->
+            <rect x="170" y="170" width="140" height="70" rx="6" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="240" y="194" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">OFFICER MCP</text>
+            <text x="240" y="210" text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">:8002 · JWT audience=officer</text>
+            <text x="240" y="226" text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">list · get · decide</text>
+
+            <!-- Arrow officer → officer mcp -->
+            <path d="M130 205h40" stroke="var(--muted,#a3adbb)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M166 200l8 5-8 5" fill="var(--muted,#a3adbb)"/>
+
+            <!-- Portal -->
+            <rect x="360" y="90" width="140" height="80" rx="6" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="430" y="118" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">PORTAL :8000</text>
+            <text x="430" y="134" text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">Flask/FastAPI</text>
+            <text x="430" y="148" text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">JWT issuer · JWKS</text>
+            <text x="430" y="162" text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">Business logic</text>
+
+            <!-- Citizen MCP → Portal -->
+            <path d="M310 55l60 75" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 2"/>
+            <path d="M366 126l-4-10 10-2" fill="var(--accent,#0b57d0)"/>
+
+            <!-- Officer MCP → Portal -->
+            <path d="M310 205l60-75" stroke="var(--muted,#a3adbb)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 2"/>
+            <path d="M366 134l-4 10 10 2" fill="var(--muted,#a3adbb)"/>
+
+            <!-- PostgreSQL -->
+            <ellipse cx="590" cy="130" rx="60" ry="30" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="590" y="126" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">PostgreSQL</text>
+            <text x="590" y="142" text-anchor="middle" font-family="ui-monospace,monospace" font-size="8"  fill="currentColor">System of record</text>
+
+            <!-- Portal → PostgreSQL -->
+            <path d="M500 130h30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M526 125l8 5-8 5" fill="currentColor"/>
+          </svg>
+          <figcaption>SewaSetu: dual-MCP architecture — Citizen and Officer MCP servers enforce separate JWT authorization boundaries; Portal is the shared system of record.</figcaption>
+        </figure>
+
+        <p>
+          The Citizen MCP server (port 8001) exposes tools like
+          <code>check_eligibility</code> and <code>submit_application</code>.
+          It validates JWT tokens against the <code>citizen</code> audience — an
+          officer token is explicitly rejected. Citizens interact through a web
+          portal or an AI assistant making Streamable HTTP MCP calls.
+        </p>
+        <p>
+          The Officer MCP server (port 8002) exposes
+          <code>list_pension_applications</code>, <code>get_pension_application</code>,
+          and <code>decide_pension_application</code> — with explicit confirmation
+          required before any state-changing decision. JWT audience is <code>officer</code>.
+          A citizen token cannot access these tools.
+        </p>
+        <p>
+          Both MCP servers call the Portal API for authorized data access;
+          the Portal is the single system of record backed by PostgreSQL.
+          Docker Compose orchestrates all services; each MCP exposes its own
+          evaluation dashboard for observability.
+        </p>
+
+        <details class="details-block" name="tech">
+          <summary>Security implementation details</summary>
+          <div class="details-block__content prose">
+            <ul>
+              <li><strong>JWT issuer:</strong> Portal publishes JWKS at <code>/.well-known/jwks.json</code></li>
+              <li><strong>Audience separation:</strong> Citizen MCP expects <code>aud=citizen</code>; Officer MCP expects <code>aud=officer</code></li>
+              <li><strong>Tool isolation:</strong> Officer-only tools are defined exclusively in officer-mcp service</li>
+              <li><strong>Decision guard:</strong> <code>decide_pension_application</code> requires explicit <code>confirm: true</code> parameter — no accidental state changes</li>
+              <li><strong>Evaluation dashboards:</strong> Each MCP exposes <code>/eval-dashboard</code> showing recent tool-call events, masked identifiers</li>
+            </ul>
+          </div>
+        </details>
+
+        <h2>Outcome</h2>
+        <!-- SRC: sewasetu README.md architecture section -->
+        <p>
+          SewaSetu demonstrated a production-ready dual-MCP architecture where
+          identity isolation between citizen and officer roles is enforced at the
+          protocol level — not through application-level checks that could be bypassed.
+        </p>
+        <p>
+          Qualitatively: the authorization boundary held across all test scenarios —
+          citizen tokens were rejected by the Officer MCP, officer tokens were rejected
+          by the Citizen MCP, and decisions without confirmation flags produced no
+          state changes.
+        </p>
+        <!-- TODO(resume.sewasetu.metrics): Add quantitative metrics if available -->
+
+        <h2>What I learned</h2>
+        <ul>
+          <li>MCP's tool-call model is well-suited to e-governance: each tool maps cleanly to a workflow step with explicit inputs and audit trail.</li>
+          <li>JWT audience separation is architecturally cleaner than runtime role-checks — the boundary is enforced before tool execution, not inside it.</li>
+          <li>Evaluation dashboards are essential for demonstrating correctness in a demo context — inspectors need evidence of tool-call outcomes, not just assertion that it works.</li>
+        </ul>
+
+      </article>
+
+      <nav class="pager" aria-label="Case study navigation">
+        <a href="mindmate.html" class="pager__link">
+          <span class="pager__dir">← Previous</span>
+          <span class="pager__title">MindMate — Personalized AI Wellness Agent</span>
+        </a>
+        <span></span><!-- no next -->
+      </nav>
+
+      <section aria-labelledby="cs-contact-ss" style="padding-block:var(--sp-12);text-align:center;border-block-start:1px solid var(--border);">
+        <h2 id="cs-contact-ss" style="font-size:var(--text-2xl);margin-block-end:var(--sp-4);">Building AI for real-world systems?</h2>
+        <p style="color:var(--muted);margin-block-end:var(--sp-6);max-inline-size:44ch;margin-inline:auto;">I'm open to AI Engineer and Generative AI roles.</p>
+        <a href="mailto:aitech.surya24@gmail.com" class="btn btn--primary">Get in touch</a>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap site-footer__inner">
+      <p class="site-footer__copy">&copy; <time datetime="2026">2026</time> <strong>Surya M</strong>.</p>
+      <span class="site-footer__meta">Last updated: <time datetime="2026-11">November 2026</time></span>
+      <a href="../index.html" class="site-footer__back">← All projects</a>
+    </div>
+  </footer>
+
+</body>
+</html>

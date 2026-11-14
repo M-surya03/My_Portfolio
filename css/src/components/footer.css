@@ -1,0 +1,111 @@
+/* ==========================================================================
+   footer.css — Site footer
+   Dependencies: 00-tokens.css
+   ========================================================================== */
+
+@layer components {
+
+  .site-footer {
+    border-block-start: 1px solid var(--border);
+    padding-block: var(--sp-8);
+    margin-block-start: var(--sp-16);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+  }
+
+  .site-footer__copy {
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+
+  .site-footer__copy strong {
+    color: var(--text);
+  }
+
+  .site-footer__meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--muted);
+  }
+
+  .site-footer__back {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    padding-block: var(--sp-2);
+    padding-inline: var(--sp-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    transition: background-color var(--dur-fast) var(--ease-out);
+  }
+
+  .site-footer__back:hover {
+    background-color: var(--bg-subtle);
+  }
+
+  /* -------------------------------------------------------------------------
+     Pattern G: Certifications scroll-snap rail
+     ------------------------------------------------------------------------- */
+  .cert-rail {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(85%, 22rem);
+    gap: var(--sp-4);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    padding-block: var(--sp-2);
+    /* A11y: visible scrollbar for keyboard users */
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+    list-style: none;
+  }
+
+  /* Scroll snap region focus ring */
+  .cert-rail:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 4px;
+    border-radius: var(--radius-sm);
+  }
+
+  .cert-card {
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-4);
+  }
+
+  .cert-card__issuer {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .cert-card__name {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--text);
+    line-height: var(--leading-snug);
+  }
+
+  .cert-card__year {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--muted);
+    margin-block-start: auto;
+  }
+
+} /* end @layer components */

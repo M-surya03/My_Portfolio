@@ -1,0 +1,105 @@
+/* ==========================================================================
+   filter.css — Pattern B: Tag filter (radio + :has, no JS)
+   Dependencies: 00-tokens.css, card.css
+   ========================================================================== */
+
+@layer components {
+
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    margin-block-end: var(--sp-8);
+    border: none;
+    padding: 0;
+  }
+
+  .filter legend {
+    /* WHY: visually part of the fieldset label context, hidden from layout */
+    float: left;
+    inline-size: 100%;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--muted);
+    margin-block-end: var(--sp-3);
+  }
+
+  /* WHY: inputs are keyboard-focusable but visually hidden; labels serve as buttons */
+  .filter input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    inline-size: 1px;
+    block-size: 1px;
+  }
+
+  .filter label {
+    display: inline-flex;
+    align-items: center;
+    padding-block: var(--sp-2);
+    padding-inline: var(--sp-4);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--muted);
+    background-color: var(--bg-elevated);
+    transition: background-color var(--dur-fast) var(--ease-out),
+                border-color     var(--dur-fast) var(--ease-out),
+                color            var(--dur-fast) var(--ease-out);
+    /* A11y: 44px min height */
+    min-block-size: 2.75rem;
+  }
+
+  .filter label:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Checked state */
+  .filter input:checked + label {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+  }
+
+  /* Focus visible on label when radio is focused */
+  .filter input:focus-visible + label {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* -------------------------------------------------------------------------
+     Pattern B: Show/hide cards based on filter
+     WHY: :has() on the section allows hiding cards by tag without JS
+     Fallback: without :has() support, all cards are always visible
+     ------------------------------------------------------------------------- */
+  @supports selector(:has(*)) {
+
+    /* RAG filter */
+    .work:has(#f-rag:checked) .card:not([data-tags~="rag"]) { display: none; }
+
+    /* LLM filter */
+    .work:has(#f-llm:checked) .card:not([data-tags~="llm"]) { display: none; }
+
+    /* Agents / MCP filter */
+    .work:has(#f-agents:checked) .card:not([data-tags~="agents"]) { display: none; }
+
+    /* Healthcare filter */
+    .work:has(#f-healthcare:checked) .card:not([data-tags~="healthcare"]) { display: none; }
+
+    /* ML / Deep Learning filter */
+    .work:has(#f-ml:checked) .card:not([data-tags~="ml"]) { display: none; }
+
+    /* Pattern H: Disable sticky stack when a non-all filter is active */
+    @media (min-width: 60rem) and (min-height: 42rem) {
+      .work:has(.filter input:not(#f-all):checked) .stack > .card {
+        position: static;
+        top: auto;
+      }
+    }
+  }
+
+} /* end @layer components */

@@ -1,0 +1,98 @@
+/* ==========================================================================
+   01-reset.css — Minimal opinionated reset
+   Dependencies: 00-tokens.css (via @layer order)
+   ========================================================================== */
+
+@layer reset {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    /* WHY: prevent font inflation on mobile */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* WHY: smooth scroll for anchor links; controlled via scroll-padding-top */
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-h);
+    hanging-punctuation: first last;
+  }
+
+  /* WHY: respect user motion preferences for smooth scroll */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    min-block-size: 100dvb;
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-inline-size: 100%;
+  }
+
+  /* WHY: preserve aspect ratio */
+  img { block-size: auto; }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* WHY: prevent long words from overflowing narrow containers */
+  p,
+  h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+
+  /* WHY: remove default list styles only when semantic context implies it */
+  ul[class],
+  ol[class] {
+    list-style: none;
+  }
+
+  /* WHY: preserve intended whitespace in code blocks */
+  pre { white-space: pre-wrap; }
+
+  /* WHY: remove default fieldset border */
+  fieldset {
+    border: none;
+  }
+
+  /* WHY: summary should look like a button by default */
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+
+  /* WHY: address is used for contact info, not literal address */
+  address { font-style: normal; }
+
+  /* WHY: abbr with title should have dotted underline */
+  abbr[title] {
+    text-decoration: underline dotted;
+    cursor: help;
+  }
+
+  /* WHY: ensure table elements are block-level for styling */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+} /* end @layer reset */

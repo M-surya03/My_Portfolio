@@ -1,0 +1,66 @@
+/* ==========================================================================
+   theme-switch.css — Pattern A: Tri-state Auto/Light/Dark switch
+   Note: choice is NOT persisted without JS (documented in README)
+   Dependencies: 00-tokens.css
+   ========================================================================== */
+
+@layer components {
+
+  .theme-switch {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    padding: 2px;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+  }
+
+  /* WHY: radio inputs are hidden but keyboard-focusable via labels */
+  .theme-switch input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    inline-size: 1px;
+    block-size: 1px;
+  }
+
+  .theme-switch label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 1.75rem;
+    min-block-size: 1.75rem;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    color: var(--muted);
+    font-size: var(--text-xs);
+    transition: background-color var(--dur-fast) var(--ease-out),
+                color var(--dur-fast) var(--ease-out);
+  }
+
+  .theme-switch label:hover {
+    color: var(--text);
+    background-color: var(--bg-elevated);
+  }
+
+  /* Checked state */
+  .theme-switch input:checked + label {
+    background-color: var(--accent);
+    color: var(--on-accent);
+    /* A11y: contrast of on-accent (white) on accent blue is > 4.5:1 */
+  }
+
+  /* Focus visible on the label when radio is focused */
+  .theme-switch input:focus-visible + label {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* SVG icons inside labels */
+  .theme-switch label svg {
+    inline-size: 1rem;
+    block-size: 1rem;
+    pointer-events: none;
+  }
+
+} /* end @layer components */

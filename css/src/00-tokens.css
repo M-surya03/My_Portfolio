@@ -1,0 +1,185 @@
+/* ==========================================================================
+   00-tokens.css — Design tokens (colours, spacing, type, radii, durations)
+   Dependencies: none. All other CSS imports this via @layer tokens.
+   ========================================================================== */
+
+@layer tokens {
+
+  /* -------------------------------------------------------------------------
+     Colour primitives — referenced only inside semantic tokens below
+     ------------------------------------------------------------------------- */
+  :root {
+    --_warm-50:  #fbfaf7;
+    --_warm-100: #f3f1ec;
+    --_warm-200: #e5e1d8;
+    --_warm-800: #2a2f38;
+    --_warm-900: #14181f;
+    --_warm-950: #0e1116;
+
+    --_blue-400: #8ab4ff;
+    --_blue-600: #0b57d0;
+    --_blue-700: #0942a3;
+
+    --_slate-400: #a3adbb;
+    --_slate-500: #6b7585;
+    --_slate-600: #4a5565;
+
+    --_red-400:   #f87171;
+  }
+
+  /* -------------------------------------------------------------------------
+     Semantic colour tokens — light-dark() for auto theme
+     Contrast audit (light/dark, against bg):
+       --text   #14181f on #fbfaf7 → 18.3:1  ✓ AAA
+       --muted  #4a5565 on #fbfaf7 →  7.0:1  ✓ AA large; borderline AA body
+       --accent #0b57d0 on #fbfaf7 →  5.9:1  ✓ AA
+       --text   #e8ecf2 on #0e1116 → 15.1:1  ✓ AAA
+       --muted  #a3adbb on #0e1116 →  7.6:1  ✓ AAA
+       --accent #8ab4ff on #0e1116 →  7.1:1  ✓ AAA
+     ------------------------------------------------------------------------- */
+  :root {
+    color-scheme: light dark;
+
+    --bg:          light-dark(var(--_warm-50),  var(--_warm-950));
+    --bg-subtle:   light-dark(var(--_warm-100), #161b23);
+    --bg-elevated: light-dark(#ffffff,          #1c2230);
+    --border:      light-dark(var(--_warm-200), #2d3545);
+    --text:        light-dark(var(--_warm-900), #e8ecf2);
+    --muted:       light-dark(var(--_slate-600),var(--_slate-400));
+    --accent:      light-dark(var(--_blue-600), var(--_blue-400));
+    --accent-dim:  light-dark(#dce8fb,          #1a2d52);
+    --on-accent:   #ffffff;
+    --focus:       light-dark(var(--_blue-700), var(--_blue-400));
+
+    /* Rail / timeline */
+    --rail:        light-dark(var(--_warm-200), #2d3545);
+
+    /* A11y: high-contrast (prefers-contrast: more) overrides below */
+  }
+
+  /* Tri-state theme switch (Pattern A) */
+  :root:has(#theme-light:checked) { color-scheme: light; }
+  :root:has(#theme-dark:checked)  { color-scheme: dark; }
+
+  /* prefers-contrast: more — strengthen borders & muted text */
+  @media (prefers-contrast: more) {
+    :root {
+      --muted:  light-dark(var(--_warm-900), #e8ecf2);
+      --border: light-dark(var(--_warm-900), #e8ecf2);
+      --rail:   light-dark(var(--_warm-900), #e8ecf2);
+    }
+  }
+
+  /* forced-colors — use system tokens, keep visible borders */
+  @media (forced-colors: active) {
+    :root {
+      --bg:          Canvas;
+      --bg-subtle:   Canvas;
+      --bg-elevated: Canvas;
+      --border:      ButtonBorder;
+      --text:        CanvasText;
+      --muted:       GrayText;
+      --accent:      LinkText;
+      --focus:       Highlight;
+      --on-accent:   ButtonText;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Spacing scale (4/8px base)
+     ------------------------------------------------------------------------- */
+  :root {
+    --sp-1:  0.25rem;   /*  4px */
+    --sp-2:  0.5rem;    /*  8px */
+    --sp-3:  0.75rem;   /* 12px */
+    --sp-4:  1rem;      /* 16px */
+    --sp-5:  1.25rem;   /* 20px */
+    --sp-6:  1.5rem;    /* 24px */
+    --sp-8:  2rem;      /* 32px */
+    --sp-10: 2.5rem;    /* 40px */
+    --sp-12: 3rem;      /* 48px */
+    --sp-16: 4rem;      /* 64px */
+    --sp-20: 5rem;      /* 80px */
+    --sp-24: 6rem;      /* 96px */
+  }
+
+  /* -------------------------------------------------------------------------
+     Fluid type scale — clamp(min, preferred, max)
+     ------------------------------------------------------------------------- */
+  :root {
+    --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.8125rem);
+    --text-sm:   clamp(0.875rem, 0.84rem + 0.2vw,  0.9375rem);
+    --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.0625rem);
+    --text-lg:   clamp(1.125rem, 1rem    + 0.6vw,  1.25rem);
+    --text-xl:   clamp(1.25rem,  1.05rem + 1vw,    1.5rem);
+    --text-2xl:  clamp(1.5rem,   1.2rem  + 1.5vw,  2rem);
+    --text-3xl:  clamp(1.875rem, 1.4rem  + 2.4vw,  2.75rem);
+    --text-4xl:  clamp(2.25rem,  1.5rem  + 3.75vw, 3.75rem);
+    --text-5xl:  clamp(2.75rem,  1.6rem  + 5.75vw, 5rem);
+  }
+
+  /* -------------------------------------------------------------------------
+     Typography tokens
+     ------------------------------------------------------------------------- */
+  :root {
+    --font-sans:  ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+                  "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+                  "Apple Color Emoji", "Segoe UI Emoji";
+    --font-mono:  ui-monospace, "Cascadia Code", "Fira Code", "Source Code Pro",
+                  Menlo, Consolas, "Courier New", monospace;
+
+    --leading-tight:  1.2;
+    --leading-snug:   1.35;
+    --leading-normal: 1.6;
+    --leading-relaxed:1.75;
+
+    --tracking-tight:  -0.02em;
+    --tracking-normal:  0;
+    --tracking-wide:    0.06em;
+    --tracking-widest:  0.12em;
+
+    --measure: 68ch; /* max line length */
+  }
+
+  /* -------------------------------------------------------------------------
+     Radius & border tokens
+     ------------------------------------------------------------------------- */
+  :root {
+    --radius-sm:  0.25rem;  /*  4px */
+    --radius-md:  0.5rem;   /*  8px */
+    --radius-lg:  0.75rem;  /* 12px */
+    --radius-xl:  1rem;     /* 16px */
+    --radius-pill:9999px;
+  }
+
+  /* -------------------------------------------------------------------------
+     Shadow tokens
+     ------------------------------------------------------------------------- */
+  :root {
+    --shadow-sm: 0 1px 3px 0 rgba(0 0 0 / 0.08), 0 1px 2px -1px rgba(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0 0 0 / 0.1), 0 2px 4px -2px rgba(0 0 0 / 0.06);
+    --shadow-lift: 0 8px 16px -4px rgba(0 0 0 / 0.14);
+  }
+
+  /* -------------------------------------------------------------------------
+     Motion duration tokens
+     ------------------------------------------------------------------------- */
+  :root {
+    --dur-fast:   120ms;
+    --dur-base:   180ms;
+    --dur-slow:   250ms;
+    --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in:    cubic-bezier(0.4,  0, 1,   1);
+  }
+
+  /* -------------------------------------------------------------------------
+     Layout tokens
+     ------------------------------------------------------------------------- */
+  :root {
+    --max-w:      72rem;    /* 1152px content width */
+    --gutter:     clamp(var(--sp-4), 4vw, var(--sp-8));
+    --header-h:   3.5rem;   /* updated by header component */
+    --cols:       12;
+  }
+
+} /* end @layer tokens */

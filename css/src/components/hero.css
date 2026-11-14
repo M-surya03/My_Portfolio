@@ -1,0 +1,123 @@
+/* ==========================================================================
+   hero.css — Hero section component
+   Dependencies: 00-tokens.css
+   ========================================================================== */
+
+@layer components {
+
+  .hero {
+    padding-block: var(--sp-20) var(--sp-16);
+    min-block-size: 85dvb;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* WHY: decorative background grid — purely visual, aria-hidden */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(to right, var(--border) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* WHY: fade out grid at bottom */
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline: 0;
+    block-size: 40%;
+    background: linear-gradient(to bottom, transparent, var(--bg));
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    margin-block-end: var(--sp-5);
+  }
+
+  .hero__role {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--accent);
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .hero__dot {
+    inline-size: 4px;
+    block-size: 4px;
+    border-radius: 50%;
+    background-color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .hero__location {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--muted);
+  }
+
+  /* -------------------------------------------------------------------------
+     Name heading — gradient in 90-motion.css (gated)
+     Fallback: solid text colour
+     ------------------------------------------------------------------------- */
+  .hero__name {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-block-end: var(--sp-5);
+    color: var(--text); /* Fallback: solid text */
+  }
+
+  .hero__value-prop {
+    font-size: var(--text-xl);
+    color: var(--muted);
+    max-inline-size: 50ch;
+    line-height: var(--leading-snug);
+    margin-block-end: var(--sp-8);
+    font-weight: 400;
+  }
+
+  .hero__value-prop strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+  }
+
+  /* -------------------------------------------------------------------------
+     Progress bar (Pattern C) — fixed under header
+     aria-hidden: decorative
+     ------------------------------------------------------------------------- */
+  .progress {
+    position: fixed;
+    inset-block-start: var(--header-h);
+    inset-inline: 0;
+    block-size: 2px;
+    background: linear-gradient(to right, var(--accent), light-dark(var(--_blue-700), var(--_blue-400)));
+    transform-origin: 0 50%;
+    scale: 0 1; /* default: not visible; animation applied in 90-motion.css */
+    z-index: 99;
+    pointer-events: none;
+  }
+
+} /* end @layer components */

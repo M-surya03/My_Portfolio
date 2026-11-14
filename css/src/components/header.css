@@ -1,0 +1,57 @@
+/* ==========================================================================
+   header.css — Site header + sticky behaviour
+   Dependencies: 00-tokens.css, 02-base.css
+   ========================================================================== */
+
+@layer components {
+
+  .site-header {
+    position: sticky;
+    inset-block-start: 0;
+    z-index: 100;
+    block-size: var(--header-h);
+    background-color: var(--bg);
+    border-block-end: 1px solid var(--border);
+    /* Perf: will-change promotes header to its own compositing layer */
+    will-change: transform;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    /* WHY: semi-transparent to show scroll context behind */
+    background-color: color-mix(in srgb, var(--bg) 90%, transparent);
+    transition: border-color var(--dur-base) var(--ease-out);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    block-size: 100%;
+    gap: var(--sp-4);
+  }
+
+  /* -------------------------------------------------------------------------
+     Wordmark
+     ------------------------------------------------------------------------- */
+  .wordmark {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    letter-spacing: var(--tracking-tight);
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .wordmark:hover { color: var(--accent); }
+
+  /* -------------------------------------------------------------------------
+     Header right side — nav + controls
+     ------------------------------------------------------------------------- */
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    flex-shrink: 0;
+  }
+
+} /* end @layer components */

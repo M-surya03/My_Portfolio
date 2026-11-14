@@ -1,0 +1,192 @@
+/* ==========================================================================
+   print.css — Print stylesheet (linked with media="print")
+   WHY: Non-render-blocking; only loaded for print
+   ========================================================================== */
+
+@page {
+  margin: 14mm;
+  size: A4 portrait;
+}
+
+/* -------------------------------------------------------------------------
+   Base overrides
+   ------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  color: #000 !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: #000 !important;
+  background: #fff !important;
+}
+
+/* -------------------------------------------------------------------------
+   Hide non-essential elements
+   ------------------------------------------------------------------------- */
+.site-header,
+.theme-switch,
+.menu-btn,
+.progress,
+.filter,
+.hero::before,
+.hero::after,
+.btn--ghost,
+.pager,
+.site-footer__back,
+.arch-diagram,
+#site-nav {
+  display: none !important;
+}
+
+/* -------------------------------------------------------------------------
+   Show full URLs after external links
+   ------------------------------------------------------------------------- */
+a[href^="http"]::after,
+a[href^="https"]::after {
+  content: " (" attr(href) ")";
+  font-size: 9pt;
+  color: #555 !important;
+}
+
+/* Don't duplicate self-referential links */
+a[href^="#"]::after,
+a[href^="mailto:"]::after {
+  content: "";
+}
+
+/* -------------------------------------------------------------------------
+   Layout adjustments
+   ------------------------------------------------------------------------- */
+.hero {
+  min-block-size: auto;
+  padding-block: 2rem 1rem;
+}
+
+.hero__name {
+  font-size: 28pt;
+  -webkit-text-fill-color: #000 !important;
+  background: none !important;
+}
+
+.section {
+  padding-block: 1.5rem;
+  break-before: auto;
+}
+
+.wrap {
+  padding-inline: 0;
+  max-inline-size: 100%;
+}
+
+/* -------------------------------------------------------------------------
+   Avoid page breaks inside key elements
+   ------------------------------------------------------------------------- */
+.card,
+.timeline__item,
+.skill-group,
+.tldr {
+  break-inside: avoid;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  break-after: avoid;
+}
+
+/* -------------------------------------------------------------------------
+   Cards — single column for print
+   ------------------------------------------------------------------------- */
+.cards {
+  grid-template-columns: 1fr;
+}
+
+.card {
+  border: 1px solid #ccc;
+}
+
+.card--featured::before {
+  display: none;
+}
+
+/* -------------------------------------------------------------------------
+   Timeline
+   ------------------------------------------------------------------------- */
+.timeline::before {
+  background: #ccc;
+}
+
+.timeline__item::before {
+  border-color: #000;
+}
+
+/* -------------------------------------------------------------------------
+   Skills — two columns
+   ------------------------------------------------------------------------- */
+.skills-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.skill-group {
+  border: 1px solid #ccc;
+}
+
+/* -------------------------------------------------------------------------
+   Certifications — block layout (not scroll)
+   ------------------------------------------------------------------------- */
+.cert-rail {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+/* -------------------------------------------------------------------------
+   Expand all details elements
+   ------------------------------------------------------------------------- */
+details {
+  display: block;
+}
+
+details summary::after {
+  display: none;
+}
+
+details > * {
+  display: block !important;
+}
+
+/* -------------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------------- */
+.site-footer__inner {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* -------------------------------------------------------------------------
+   Chip colours
+   ------------------------------------------------------------------------- */
+.chip {
+  border: 1px solid #999;
+  background: none !important;
+  color: #000 !important;
+}
+
+/* -------------------------------------------------------------------------
+   Proof strip
+   ------------------------------------------------------------------------- */
+.proof-strip {
+  border-block: 1px solid #ccc;
+}
+
+.proof-strip__value {
+  font-size: 20pt;
+}

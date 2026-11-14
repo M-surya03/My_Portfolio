@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FloatChat — Oceanographic AI Platform | Surya M</title>
+  <meta name="description" content="Case study: FloatChat makes ARGO float ocean data queryable in plain English using LLaMA-3-8B, RAG, MCP, and FAISS. Built for Smart India Hackathon 2024.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfaf7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0e1116">
+  <link rel="canonical" href="https://surya-m.dev/projects/floatchat.html">
+
+  <meta property="og:type"        content="article">
+  <meta property="og:title"       content="FloatChat — Oceanographic AI Platform">
+  <meta property="og:description" content="RAG pipeline over ARGO float data: LLaMA-3-8B + MCP + FAISS enables plain-English ocean data queries for policymakers and NGOs.">
+  <meta property="og:url"         content="https://surya-m.dev/projects/floatchat.html">
+  <meta property="og:image"       content="https://surya-m.dev/assets/og-image.svg">
+  <meta property="og:image:alt"   content="FloatChat case study — Surya M">
+
+  <meta name="twitter:card"  content="summary_large_image">
+  <meta name="twitter:title" content="FloatChat — Oceanographic AI Platform by Surya M">
+  <meta name="twitter:image" content="https://surya-m.dev/assets/og-image.svg">
+
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/styles.min.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+
+  <!-- JSON-LD: BreadcrumbList + CreativeWork -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://surya-m.dev/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://surya-m.dev/#work" },
+          { "@type": "ListItem", "position": 3, "name": "FloatChat","item": "https://surya-m.dev/projects/floatchat.html" }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "FloatChat",
+        "description": "LLM-powered oceanographic data platform enabling natural-language querying of ARGO float data via RAG and MCP.",
+        "applicationCategory": "DataAnalysisApplication",
+        "author": { "@type": "Person", "name": "Surya M" },
+        "programmingLanguage": ["Python"],
+        "url": "https://github.com/M-surya03/Oceanographic-ChatBot"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <input type="radio" id="theme-auto"  name="theme" checked class="vh">
+  <input type="radio" id="theme-light" name="theme"         class="vh">
+  <input type="radio" id="theme-dark"  name="theme"         class="vh">
+
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="wrap site-header__inner">
+      <a href="../index.html" class="wordmark" aria-label="Surya M — home">surya_m</a>
+      <div class="header-controls">
+        <button class="menu-btn no-print" popovertarget="site-nav"
+          aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Menu
+        </button>
+        <nav id="site-nav" popover aria-label="Primary navigation">
+          <ul class="site-nav__list">
+            <li><a href="../index.html#work"       class="site-nav__link">Work</a></li>
+            <li><a href="../index.html#experience" class="site-nav__link">Experience</a></li>
+            <li><a href="../index.html#skills"     class="site-nav__link">Skills</a></li>
+            <li><a href="../index.html#about"      class="site-nav__link">About</a></li>
+            <li><a href="../index.html#contact"    class="site-nav__link">Contact</a></li>
+          </ul>
+        </nav>
+        <fieldset class="theme-switch no-print" aria-label="Colour theme">
+          <legend class="vh">Colour theme</legend>
+          <input type="radio" id="theme-auto-btn"  name="theme-btn" value="auto" checked>
+          <label for="theme-auto-btn" title="Auto">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="4" fill="currentColor"/><path d="M8 2V1M8 15v-1M2 8H1M15 8h-1M4.1 4.1l-.7-.7M12.6 12.6l-.7-.7M4.1 11.9l-.7.7M12.6 3.4l-.7.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span class="vh">Auto</span>
+          </label>
+          <input type="radio" id="theme-light-btn" name="theme-btn" value="light">
+          <label for="theme-light-btn" title="Light">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 1v1M8 14v1M1 8h1M14 8h1M3.4 3.4l.7.7M11.9 11.9l.7.7M3.4 12.6l.7-.7M11.9 4.1l.7-.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <span class="vh">Light</span>
+          </label>
+          <input type="radio" id="theme-dark-btn" name="theme-btn" value="dark">
+          <label for="theme-dark-btn" title="Dark">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5Z" fill="currentColor"/></svg>
+            <span class="vh">Dark</span>
+          </label>
+        </fieldset>
+      </div>
+    </div>
+  </header>
+
+  <style>
+    :root:has(#theme-light-btn:checked) { color-scheme: light; }
+    :root:has(#theme-dark-btn:checked)  { color-scheme: dark; }
+  </style>
+
+  <main id="main" tabindex="-1">
+
+    <!-- CASE STUDY HERO -->
+    <!-- SRC: resume.projects[FloatChat] -->
+    <header class="cs-hero">
+      <div class="wrap">
+        <a href="../index.html#work" class="cs-hero__back">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          All projects
+        </a>
+        <span class="cs-hero__tag">01 · Featured · SIH 2024</span>
+        <h1 class="cs-hero__title">FloatChat — Oceanographic AI Platform</h1>
+        <p class="cs-hero__summary">
+          A RAG-powered platform enabling plain-English queries over ARGO float
+          ocean data — built for Smart India Hackathon 2024, targeting policymakers
+          and NGOs with no data-science background.
+        </p>
+      </div>
+    </header>
+
+    <div class="wrap" style="padding-block:var(--sp-10);">
+
+      <!-- META -->
+      <!-- SRC: resume.projects[FloatChat] -->
+      <dl class="cs-meta">
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Role</dt>
+          <dd class="cs-meta__value">Sole developer</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Timeline</dt>
+          <dd class="cs-meta__value">SIH 2024 / 2025</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Stack</dt>
+          <dd class="cs-meta__value">Python · LangChain · LLaMA-3-8B · MCP · FAISS · PostgreSQL · NetCDF</dd>
+        </div>
+        <div class="cs-meta__item">
+          <dt class="cs-meta__label">Links</dt>
+          <dd class="cs-meta__value">
+            <a href="https://github.com/M-surya03/Oceanographic-ChatBot" rel="noopener noreferrer">GitHub repo</a>
+          </dd>
+        </div>
+      </dl>
+
+      <!-- TL;DR -->
+      <div class="tldr">
+        <p class="tldr__heading">TL;DR</p>
+        <ul>
+          <li>ARGO float NetCDF files ingested into PostgreSQL, queryable in plain English via LLaMA-3-8B and RAG.</li>
+          <li>Semantic search over all-MiniLM-L6-v2 embeddings in FAISS; MCP protocol for context-aware tool calls.</li>
+          <li>Interactive visualisations (float trajectories, depth profiles) make ocean science accessible to non-technical stakeholders.</li>
+        </ul>
+      </div>
+
+      <!-- PROSE -->
+      <article class="prose">
+
+        <h2>Problem</h2>
+        <!-- SRC: resume.projects[FloatChat] bullets -->
+        <p>
+          ARGO float data — the global ocean observing network's crown jewel — is
+          distributed as NetCDF files: a binary, multi-dimensional format with no
+          natural-language interface. Oceanographers can query it; policymakers,
+          NGOs, and journalists cannot. Smart India Hackathon 2024 posed the challenge:
+          make this data accessible without requiring data-science skills.
+        </p>
+
+        <h2>Constraints</h2>
+        <ul>
+          <li>No external ocean-data API — must ingest raw NetCDF via FTP.</li>
+          <li>Queries must remain grounded in actual float data (no hallucination).</li>
+          <li>Visualisations must render in a browser with no specialist libraries on the client side.</li>
+        </ul>
+
+        <h2>Approach</h2>
+        <p>
+          The pipeline has three stages: ingest, retrieve, respond.
+        </p>
+
+        <!-- Architecture SVG diagram — inline, ≤ 3 KB, currentColor, token colours -->
+        <figure class="arch-diagram">
+          <svg
+            viewBox="0 0 680 240"
+            width="680" height="240"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-labelledby="fc-diag-title fc-diag-desc"
+          >
+            <title id="fc-diag-title">FloatChat system architecture</title>
+            <desc id="fc-diag-desc">
+              Three-stage pipeline: ARGO FTP source feeds NetCDF parser (xarray) into PostgreSQL.
+              PostgreSQL feeds the RAG retriever (FAISS + MiniLM embeddings). The retriever feeds
+              LLaMA-3-8B via LangChain and MCP, producing natural-language responses and
+              interactive visualisations.
+            </desc>
+
+            <!-- Stage boxes -->
+            <!-- Stage 1: Ingest -->
+            <rect x="10" y="80" width="140" height="80" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="80" y="108" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">INGEST</text>
+            <text x="80" y="124" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">ARGO FTP</text>
+            <text x="80" y="138" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">xarray · NetCDF</text>
+            <text x="80" y="152" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">→ PostgreSQL</text>
+
+            <!-- Arrow 1 -->
+            <path d="M150 120h40" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M186 115l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+
+            <!-- Stage 2: Retrieve -->
+            <rect x="190" y="80" width="140" height="80" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="260" y="108" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">RETRIEVE</text>
+            <text x="260" y="124" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">MiniLM embeddings</text>
+            <text x="260" y="138" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">FAISS vector store</text>
+            <text x="260" y="152" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">semantic search</text>
+
+            <!-- Arrow 2 -->
+            <path d="M330 120h40" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M366 115l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+
+            <!-- Stage 3: Respond -->
+            <rect x="370" y="80" width="140" height="80" rx="8" stroke="currentColor" stroke-width="1.5" fill="var(--bg-subtle,#f3f1ec)"/>
+            <text x="440" y="108" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="currentColor" font-weight="600">RESPOND</text>
+            <text x="440" y="124" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">LLaMA-3-8B</text>
+            <text x="440" y="138" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">LangChain · MCP</text>
+            <text x="440" y="152" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">NL answer + viz</text>
+
+            <!-- Arrow 3 -->
+            <path d="M510 120h40" stroke="var(--accent,#0b57d0)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M546 115l8 5-8 5" fill="var(--accent,#0b57d0)"/>
+
+            <!-- Output -->
+            <rect x="550" y="90" width="120" height="60" rx="8" stroke="currentColor" stroke-width="1" stroke-dasharray="4 2" fill="none"/>
+            <text x="610" y="116" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">User / NGO /</text>
+            <text x="610" y="130" text-anchor="middle" font-family="ui-monospace,monospace" font-size="9" fill="currentColor">Policymaker</text>
+
+            <!-- Label bar -->
+            <rect x="10" y="10" width="150" height="22" rx="4" fill="var(--accent-dim,#dce8fb)"/>
+            <text x="85" y="25" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="var(--accent,#0b57d0)">01 Ingest</text>
+
+            <rect x="190" y="10" width="150" height="22" rx="4" fill="var(--accent-dim,#dce8fb)"/>
+            <text x="265" y="25" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="var(--accent,#0b57d0)">02 Retrieve</text>
+
+            <rect x="370" y="10" width="150" height="22" rx="4" fill="var(--accent-dim,#dce8fb)"/>
+            <text x="445" y="25" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10" fill="var(--accent,#0b57d0)">03 Respond</text>
+          </svg>
+          <figcaption>FloatChat: three-stage RAG pipeline from ARGO FTP source to natural-language response.</figcaption>
+        </figure>
+
+        <p>
+          <strong>Stage 1 — Ingest:</strong> ARGO float files are fetched via FTP, parsed
+          with xarray (NetCDF format), and stored as structured rows in PostgreSQL — covering
+          temperature, salinity, pressure, and geographic coordinates by float ID and date.
+        </p>
+
+        <p>
+          <strong>Stage 2 — Retrieve:</strong> User queries are embedded with
+          all-MiniLM-L6-v2 and matched against a FAISS vector index of float-profile
+          summaries. The top-k results provide grounded context for the LLM.
+        </p>
+
+        <p>
+          <strong>Stage 3 — Respond:</strong> LLaMA-3-8B (via LangChain) synthesises
+          a natural-language answer from the retrieved context. MCP exposes structured
+          tool calls — allowing the model to request specific depth profiles or
+          trajectories as follow-ups, then renders interactive visualisations in the UI.
+        </p>
+
+        <!-- Technical details accordion (Pattern E) -->
+        <details class="details-block" name="tech">
+          <summary>Technical implementation details</summary>
+          <div class="details-block__content prose">
+            <ul>
+              <li><strong>Embedding model:</strong> sentence-transformers/all-MiniLM-L6-v2 (22 MB, runs CPU)</li>
+              <li><strong>Vector store:</strong> FAISS with L2 index; persisted to disk for restarts</li>
+              <li><strong>LLM:</strong> LLaMA-3-8B via HuggingFace inference (quantized 4-bit for local dev)</li>
+              <li><strong>MCP layer:</strong> Exposes get_temperature_profile, get_salinity_profile, list_floats as MCP tools</li>
+              <li><strong>Visualisations:</strong> Server-rendered matplotlib figures served as base64 PNG inline</li>
+              <li><strong>Database:</strong> PostgreSQL with schema per ARGO parameter set</li>
+            </ul>
+          </div>
+        </details>
+
+        <h2>Outcome</h2>
+        <p>
+          FloatChat successfully demonstrated plain-English access to ARGO float data for
+          non-technical audiences in the Smart India Hackathon context. Users could ask
+          questions like <em>"What was the sea surface temperature near 12°N 80°E in
+          March 2024?"</em> and receive grounded, cited answers with trajectory maps.
+        </p>
+        <p>
+          Qualitatively: the RAG pipeline eliminated hallucinated ocean coordinates —
+          every answer traced back to an actual ARGO float record.
+        </p>
+        <!-- TODO(resume.floatchat.metrics): Add quantitative metrics if available (e.g. retrieval precision, response latency) -->
+
+        <h2>What I learned</h2>
+        <ul>
+          <li>NetCDF spatial data requires careful chunking before vectorisation — naive full-file embedding was 40× slower.</li>
+          <li>MCP's tool-call interface let the LLM request follow-up data without prompt-stuffing the context window.</li>
+          <li>Non-technical users needed visualisations, not just text — the trajectory maps were the most-cited feature in feedback.</li>
+        </ul>
+
+      </article>
+
+      <!-- PAGER -->
+      <nav class="pager" aria-label="Case study navigation">
+        <span></span><!-- no previous -->
+        <a href="syllabex.html" class="pager__link pager__link--next">
+          <span class="pager__dir">Next →</span>
+          <span class="pager__title">Syllabex — Syllabus-Grounded Learning Assistant</span>
+        </a>
+      </nav>
+
+      <!-- CONTACT CTA -->
+      <section aria-labelledby="cs-contact-heading" style="padding-block:var(--sp-12);text-align:center;border-block-start:1px solid var(--border);">
+        <h2 id="cs-contact-heading" style="font-size:var(--text-2xl);margin-block-end:var(--sp-4);">
+          Interested in building something similar?
+        </h2>
+        <p style="color:var(--muted);margin-block-end:var(--sp-6);max-inline-size:44ch;margin-inline:auto;">
+          I'm open to AI Engineer and Generative AI roles.
+        </p>
+        <a href="mailto:aitech.surya24@gmail.com" class="btn btn--primary">
+          Get in touch
+        </a>
+      </section>
+
+    </div><!-- /.wrap -->
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap site-footer__inner">
+      <p class="site-footer__copy">
+        &copy; <time datetime="2026">2026</time> <strong>Surya M</strong>.
+      </p>
+      <span class="site-footer__meta">Last updated: <time datetime="2026-11">November 2026</time></span>
+      <a href="../index.html" class="site-footer__back">← All projects</a>
+    </div>
+  </footer>
+
+</body>
+</html>

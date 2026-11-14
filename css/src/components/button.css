@@ -1,0 +1,72 @@
+/* ==========================================================================
+   button.css — Button component variants
+   Dependencies: 00-tokens.css
+   ========================================================================== */
+
+@layer components {
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding-block: var(--sp-3);
+    padding-inline: var(--sp-5);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    white-space: nowrap;
+    /* A11y: 44px min touch target */
+    min-block-size: 2.75rem;
+    transition:
+      background-color var(--dur-fast) var(--ease-out),
+      border-color     var(--dur-fast) var(--ease-out),
+      color            var(--dur-fast) var(--ease-out),
+      box-shadow       var(--dur-fast) var(--ease-out),
+      translate        var(--dur-fast) var(--ease-out);
+  }
+
+  /* Primary */
+  .btn--primary {
+    background-color: var(--accent);
+    color: var(--on-accent);
+    border-color: var(--accent);
+  }
+
+  .btn--primary:hover {
+    background-color: var(--_blue-700, #0942a3);
+    border-color: var(--_blue-700, #0942a3);
+  }
+
+  /* Pressed */
+  .btn--primary:active {
+    translate: 0 1px;
+  }
+
+  /* Ghost */
+  .btn--ghost {
+    background-color: transparent;
+    color: var(--text);
+    border-color: var(--border);
+  }
+
+  .btn--ghost:hover {
+    background-color: var(--bg-subtle);
+    border-color: var(--muted);
+  }
+
+  .btn--ghost:active {
+    translate: 0 1px;
+  }
+
+  /* Small variant */
+  .btn--sm {
+    padding-block: var(--sp-2);
+    padding-inline: var(--sp-3);
+    font-size: var(--text-xs);
+    min-block-size: 2.25rem;
+  }
+
+} /* end @layer components */

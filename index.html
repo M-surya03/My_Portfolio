@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO -->
+  <title>Surya M — AI Engineer | LLMs, RAG & Agentic AI</title>
+  <meta name="description" content="Surya M is an AI Engineer building LLM applications, RAG pipelines, and agentic systems. 5 hackathon wins, CGPA 8.32, DigiDARA intern.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbfaf7">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0e1116">
+  <link rel="canonical" href="https://surya-m.dev/">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="Surya M — AI Engineer">
+  <meta property="og:description" content="Building LLM applications, RAG pipelines and agentic AI systems. 5 hackathon wins across national competitions.">
+  <meta property="og:url"         content="https://surya-m.dev/">
+  <meta property="og:image"       content="https://surya-m.dev/assets/og-image.svg">
+  <meta property="og:image:alt"   content="Surya M — AI Engineer. Building intelligent systems with LLMs, RAG, and agentic AI.">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale"      content="en_IN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Surya M — AI Engineer">
+  <meta name="twitter:description" content="Building LLM applications, RAG pipelines and agentic AI systems.">
+  <meta name="twitter:image"       content="https://surya-m.dev/assets/og-image.svg">
+  <meta name="twitter:image:alt"   content="Surya M — AI Engineer portfolio">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- CSS — single render-blocking file -->
+  <link rel="stylesheet" href="css/styles.min.css">
+  <!-- Print — non-render-blocking -->
+  <link rel="stylesheet" href="css/print.css" media="print">
+
+  <!-- JSON-LD: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Surya M",
+    "jobTitle": "AI Engineer",
+    "url": "https://surya-m.dev/",
+    "email": "aitech.surya24@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Trichy",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "IN"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Kongunadu College of Engineering and Technology",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Trichy",
+        "addressRegion": "Tamil Nadu"
+      }
+    },
+    "knowsAbout": [
+      "Large Language Models",
+      "Retrieval-Augmented Generation",
+      "Agentic AI",
+      "LangChain",
+      "LangGraph",
+      "Model Context Protocol",
+      "Google Agent Development Kit",
+      "Machine Learning",
+      "Deep Learning",
+      "Python",
+      "FastAPI",
+      "FAISS",
+      "Pinecone"
+    ],
+    "sameAs": [
+      "https://github.com/M-surya03",
+      "https://www.linkedin.com/in/surya-m-ai/"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Skip link (first focusable element) -->
+  <!-- SRC: resume.accessibility -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Pattern A: Theme switch inputs (must be siblings of :root for :has() to work) -->
+  <!-- WHY: Inputs at top-level so :root:has() selectors apply globally -->
+  <input type="radio" id="theme-auto"  name="theme" checked class="vh">
+  <input type="radio" id="theme-light" name="theme"         class="vh">
+  <input type="radio" id="theme-dark"  name="theme"         class="vh">
+
+  <!-- Pattern C: Scroll progress bar (decorative) -->
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- ======================================================================
+       HEADER
+       ====================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="wrap site-header__inner">
+
+      <!-- SRC: resume.name -->
+      <a href="#top" class="wordmark" aria-label="Surya M — home">surya_m</a>
+
+      <div class="header-controls">
+        <!-- Pattern F: Mobile nav toggle (Popover API) -->
+        <button
+          class="menu-btn no-print"
+          popovertarget="site-nav"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Menu
+        </button>
+
+        <!-- Primary Nav — Pattern F -->
+        <nav id="site-nav" popover aria-label="Primary navigation">
+          <ul class="site-nav__list">
+            <li><a href="#work"       class="site-nav__link">Work</a></li>
+            <li><a href="#experience" class="site-nav__link">Experience</a></li>
+            <li><a href="#skills"     class="site-nav__link">Skills</a></li>
+            <li><a href="#about"      class="site-nav__link">About</a></li>
+            <li><a href="#contact"    class="site-nav__link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Pattern A: Tri-state theme switch -->
+        <fieldset class="theme-switch no-print" aria-label="Colour theme">
+          <legend class="vh">Colour theme</legend>
+
+          <input type="radio" id="theme-auto-btn"  name="theme-btn" value="auto"  checked>
+          <label for="theme-auto-btn" title="Auto (follows system)">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="4" fill="currentColor"/>
+              <path d="M8 2V1M8 15v-1M2 8H1M15 8h-1M4.1 4.1l-.7-.7M12.6 12.6l-.7-.7M4.1 11.9l-.7.7M12.6 3.4l-.7.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span class="vh">Auto</span>
+          </label>
+
+          <input type="radio" id="theme-light-btn" name="theme-btn" value="light">
+          <label for="theme-light-btn" title="Light mode">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 1v1M8 14v1M1 8h1M14 8h1M3.4 3.4l.7.7M11.9 11.9l.7.7M3.4 12.6l.7-.7M11.9 4.1l.7-.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span class="vh">Light</span>
+          </label>
+
+          <input type="radio" id="theme-dark-btn"  name="theme-btn" value="dark">
+          <label for="theme-dark-btn" title="Dark mode">
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5Z" fill="currentColor"/>
+            </svg>
+            <span class="vh">Dark</span>
+          </label>
+        </fieldset>
+      </div>
+    </div>
+  </header>
+
+  <!-- WHY: Theme switch radios control :root color-scheme via :has() in tokens.css -->
+  <style>
+    :root:has(#theme-light-btn:checked) { color-scheme: light; }
+    :root:has(#theme-dark-btn:checked)  { color-scheme: dark; }
+  </style>
+
+  <!-- ======================================================================
+       MAIN
+       ====================================================================== -->
+  <main id="main" tabindex="-1">
+
+    <!-- ==================================================================
+         01 · HERO
+         ================================================================== -->
+    <!-- SRC: resume.name, resume.headline, resume.location, resume.summary -->
+    <section class="hero" id="top" aria-labelledby="hero-name">
+      <div class="wrap hero__inner">
+
+        <!-- Eyebrow: role + location -->
+        <div class="hero__eyebrow" aria-label="Role and location">
+          <span class="hero__role">AI Engineer</span>
+          <span class="hero__dot" aria-hidden="true"></span>
+          <span class="hero__location">Trichy, Tamil Nadu</span>
+        </div>
+
+        <!-- SRC: resume.name -->
+        <h1 class="hero__name" id="hero-name">Surya M</h1>
+
+        <!-- Value proposition (≤ 22 words, outcome-first) -->
+        <!-- SRC: resume.summary -->
+        <p class="hero__value-prop">
+          I build <strong>LLM applications, RAG pipelines and agentic systems</strong>
+          that make complex data accessible — proven across 5 national hackathon wins.
+        </p>
+
+        <!-- CTAs -->
+        <div class="hero__ctas">
+          <a href="#work" class="btn btn--primary">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M8 1v10M4 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            View selected work
+          </a>
+          <a href="assets/Surya_M_1.pdf" class="btn btn--ghost" download>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 12h10M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Download résumé
+          </a>
+        </div>
+
+        <!-- Proof strip — résumé-backed facts only -->
+        <!-- SRC: resume.achievements, resume.education -->
+        <ul class="proof-strip" aria-label="Key facts">
+          <li class="proof-strip__item">
+            <span class="proof-strip__value">5</span>
+            <span class="proof-strip__label">Hackathon wins</span>
+          </li>
+          <li class="proof-strip__item">
+            <span class="proof-strip__value">₹60K</span>
+            <span class="proof-strip__label">CMR Hackfest prize</span>
+          </li>
+          <li class="proof-strip__item">
+            <span class="proof-strip__value">8.32</span>
+            <span class="proof-strip__label">CGPA / 10</span>
+          </li>
+          <li class="proof-strip__item">
+            <span class="proof-strip__value">JHU</span>
+            <span class="proof-strip__label">× VIT Bhopal finalist</span>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         02 · WORK
+         ================================================================== -->
+    <!-- SRC: resume.projects -->
+    <section class="section work cv-auto" id="work" aria-labelledby="work-heading">
+      <div class="wrap">
+
+        <div class="section__eyebrow">
+          <span class="label">02 / Work</span>
+        </div>
+        <h2 class="section__heading" id="work-heading">Selected projects</h2>
+
+        <!-- Pattern B: Tag filter -->
+        <fieldset class="filter no-print" id="project-filter">
+          <legend>Filter by technology</legend>
+
+          <input type="radio" id="f-all"        name="proj-filter" checked>
+          <label for="f-all">All</label>
+
+          <input type="radio" id="f-rag"        name="proj-filter">
+          <label for="f-rag">RAG</label>
+
+          <input type="radio" id="f-llm"        name="proj-filter">
+          <label for="f-llm">LLMs</label>
+
+          <input type="radio" id="f-agents"     name="proj-filter">
+          <label for="f-agents">Agents / MCP</label>
+
+          <input type="radio" id="f-healthcare" name="proj-filter">
+          <label for="f-healthcare">Healthcare</label>
+
+          <input type="radio" id="f-ml"         name="proj-filter">
+          <label for="f-ml">ML / DL</label>
+        </fieldset>
+
+        <!-- Project cards — Pattern H (sticky-stack on tall desktop) -->
+        <ul class="cards stack" aria-label="Featured projects">
+
+          <!-- SRC: resume.projects[FloatChat] -->
+          <li class="card card--featured reveal"
+              data-tags="rag llm agents mcp langchain ocean">
+            <span class="card__eyebrow">01 · Featured · SIH 2024</span>
+            <h3 class="card__title">FloatChat — Oceanographic AI Platform</h3>
+            <p class="card__outcome">
+              Makes ARGO float ocean data queryable in plain English — built for
+              Smart India Hackathon 2024. LLaMA-3-8B + MCP + FAISS enables
+              non-technical policymakers and NGOs to explore temperature, salinity
+              and depth profiles without code.
+            </p>
+            <ul class="chips card__chips" aria-label="Technologies">
+              <li class="chip">RAG</li>
+              <li class="chip">LangChain</li>
+              <li class="chip">MCP</li>
+              <li class="chip">FAISS</li>
+            </ul>
+            <div class="card__links">
+              <a href="projects/floatchat.html" class="btn btn--primary btn--sm">
+                Read case study
+              </a>
+              <a href="https://github.com/M-surya03/Oceanographic-ChatBot"
+                 class="btn btn--ghost btn--sm"
+                 rel="noopener noreferrer">
+                GitHub
+              </a>
+            </div>
+          </li>
+
+          <!-- SRC: resume.projects[Syllabex] -->
+          <li class="card card--featured reveal"
+              data-tags="rag llm education vector-db">
+            <span class="card__eyebrow">02 · Featured · 2026</span>
+            <h3 class="card__title">Syllabex — Syllabus-Grounded Learning Assistant</h3>
+            <p class="card__outcome">
+              Solves AI-hallucination in education: faculty upload textbooks and
+              answer keys; a RAG pipeline ensures every student answer aligns
+              with institution-approved, syllabus-matched content — no more
+              unpredictable ChatGPT outputs in exams.
+            </p>
+            <ul class="chips card__chips" aria-label="Technologies">
+              <li class="chip">RAG</li>
+              <li class="chip">LLMs</li>
+              <li class="chip">Vector DB</li>
+              <li class="chip">Python</li>
+            </ul>
+            <div class="card__links">
+              <a href="projects/syllabex.html" class="btn btn--primary btn--sm">
+                Read case study
+              </a>
+              <!-- TODO(resume.projects.syllabex.github): Add GitHub URL when available -->
+              <span class="label" style="align-self:center;">
+                <!-- SRC: resume.projects.syllabex.github → MISSING -->
+              </span>
+            </div>
+          </li>
+
+          <!-- SRC: resume.projects[MindMate] -->
+          <li class="card card--featured reveal"
+              data-tags="rag llm agents healthcare">
+            <span class="card__eyebrow">03 · Featured · 2025</span>
+            <h3 class="card__title">MindMate — Personalized AI Wellness Agent</h3>
+            <p class="card__outcome">
+              Built during DigiDARA internship: a personalized mental-health AI
+              combining RAG pipelines, Pinecone vector memory, and agentic
+              workflows for context-aware mood tracking and guided relaxation.
+            </p>
+            <ul class="chips card__chips" aria-label="Technologies">
+              <li class="chip">LangChain</li>
+              <li class="chip">Pinecone</li>
+              <li class="chip">RAG</li>
+              <li class="chip">MongoDB</li>
+            </ul>
+            <div class="card__links">
+              <a href="projects/mindmate.html" class="btn btn--primary btn--sm">
+                Read case study
+              </a>
+            </div>
+          </li>
+
+          <!-- SRC: resume.projects[SewaSetu] -->
+          <li class="card card--featured reveal"
+              data-tags="agents mcp e-governance">
+            <span class="card__eyebrow">04 · Featured · 2026</span>
+            <h3 class="card__title">SewaSetu — AI Pension Portal</h3>
+            <p class="card__outcome">
+              Dual-MCP server architecture (Citizen + Officer) for old-age
+              pension workflows: separate authorization boundaries, JWT-validated
+              tools, PostgreSQL system of record, and Docker Compose deployment.
+            </p>
+            <ul class="chips card__chips" aria-label="Technologies">
+              <li class="chip">MCP</li>
+              <li class="chip">FastAPI</li>
+              <li class="chip">PostgreSQL</li>
+              <li class="chip">Docker</li>
+            </ul>
+            <div class="card__links">
+              <a href="projects/sewasetu.html" class="btn btn--primary btn--sm">
+                Read case study
+              </a>
+            </div>
+          </li>
+
+        </ul><!-- /.cards -->
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         03 · EXPERIENCE
+         ================================================================== -->
+    <!-- SRC: resume.experience, resume.education, resume.achievements -->
+    <section class="section cv-auto" id="experience" aria-labelledby="exp-heading">
+      <div class="wrap">
+
+        <div class="section__eyebrow">
+          <span class="label">03 / Experience</span>
+        </div>
+        <h2 class="section__heading" id="exp-heading">Timeline</h2>
+
+        <ol class="timeline" aria-label="Career and education timeline">
+
+          <!-- ---- 2026 ---- -->
+          <li class="timeline__year" aria-label="2026">2026</li>
+
+          <!-- SRC: resume.achievements[GENESIS] -->
+          <li class="timeline__item timeline__item--accent reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">🏆 1st Prize — GENESIS'26</span>
+              <span class="timeline__tag">Award</span>
+              <time class="timeline__dates" datetime="2026">2026</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Awarded ₹5,000 cash prize at GENESIS'26 hackathon.</li>
+            </ul>
+          </li>
+
+          <!-- SRC: resume.projects[Syllabex] -->
+          <li class="timeline__item reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">Syllabex</span>
+              <span class="timeline__tag">Project</span>
+              <time class="timeline__dates" datetime="2026">2026</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Syllabus-grounded RAG assistant controlling AI output in academic contexts.</li>
+            </ul>
+          </li>
+
+          <!-- SRC: resume.achievements[CMR Hackfest] -->
+          <li class="timeline__item timeline__item--award reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">🥈 1st Runner-Up — CMR Hackfest 3.0</span>
+              <span class="timeline__tag">Award · ₹60,000</span>
+              <time class="timeline__dates" datetime="2026-01-11">Jan 11, 2026</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Secured 1st Runner-Up with a cash prize of ₹60,000 at CMR Hackfest 3.0.</li>
+            </ul>
+          </li>
+
+          <!-- ---- 2025 ---- -->
+          <li class="timeline__year" aria-label="2025">2025</li>
+
+          <!-- SRC: resume.experience[DigiDARA] -->
+          <li class="timeline__item timeline__item--accent reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">Generative AI & Agentic AI Intern</span>
+              <span class="timeline__org">DigiDARA Technologies Pvt. Ltd., Tiruchirappalli</span>
+              <time class="timeline__dates" datetime="2025-07">Jul 2025</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Completed 3-month training covering LLMs, RAG, Vector Databases, LangChain, and LangGraph in production-oriented settings.</li>
+              <li>Built MindMate — a mental-health AI agent combining RAG pipelines and agentic workflows for context-aware responses.</li>
+              <li>Integrated FAISS/Pinecone vector search, improving LLM response relevance in real-world use cases.</li>
+            </ul>
+          </li>
+
+          <!-- SRC: resume.experience[NexiTence] -->
+          <li class="timeline__item reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">Python Developer</span>
+              <span class="timeline__org">NexiTence Technology LLP</span>
+              <time class="timeline__dates" datetime="2025-06/2025-07">Jun – Jul 2025</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Built web application features with HTML, CSS, Python, and Flask across front-end and back-end.</li>
+              <li>Explored Google ADK for agentic AI, building agents with context memory and tool integration.</li>
+            </ul>
+          </li>
+
+          <!-- SRC: resume.achievements[ZenAI] -->
+          <li class="timeline__item timeline__item--award reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">🥉 3rd Prize + Consolation — ZenAI Hackathon</span>
+              <span class="timeline__tag">Awards · ₹8,000 total</span>
+              <time class="timeline__dates" datetime="2025">2025</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Awarded 3rd Prize (₹5,000) and Consolation Prize (₹3,000) at ZenAI Hackathon.</li>
+            </ul>
+          </li>
+
+          <!-- SRC: resume.achievements[JHU Health Hackathon] -->
+          <li class="timeline__item reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">Finalist — Health Hackathon</span>
+              <span class="timeline__org">VIT Bhopal × Johns Hopkins University, USA</span>
+              <time class="timeline__dates" datetime="2025-02-19">Feb 19, 2025</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Reached finals of international health hackathon jointly organized by VIT Bhopal and Johns Hopkins University for a healthcare-focused AI solution.</li>
+            </ul>
+          </li>
+
+          <!-- SRC: resume.certifications -->
+          <li class="timeline__item reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">Certifications completed</span>
+              <span class="timeline__tag">Learning</span>
+              <time class="timeline__dates" datetime="2025">2025</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>Data Analysis with Python — freeCodeCamp</li>
+              <li>Practical ML Bootcamp with Real World Projects — TutorialsPoint</li>
+              <li>Fundamentals of Deep Learning — NVIDIA</li>
+            </ul>
+          </li>
+
+          <!-- SRC: resume.projects[FloatChat/SIH] -->
+          <li class="timeline__item reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">FloatChat — Smart India Hackathon solution</span>
+              <span class="timeline__tag">Project</span>
+              <time class="timeline__dates" datetime="2025">SIH 2025</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>RAG pipeline over ARGO float NetCDF data; LLaMA-3-8B + MCP for natural-language ocean data queries.</li>
+            </ul>
+          </li>
+
+          <!-- ---- 2023 ---- -->
+          <li class="timeline__year" aria-label="2023 — present">2023 — present</li>
+
+          <!-- SRC: resume.education[0] -->
+          <li class="timeline__item timeline__item--accent reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">B.Tech — Artificial Intelligence & Data Science</span>
+              <span class="timeline__org">Kongunadu College of Engineering and Technology, Trichy</span>
+              <time class="timeline__dates" datetime="2023/2027">2023 – 2027</time>
+            </div>
+            <ul class="timeline__bullets">
+              <li>CGPA: 8.32 / 10</li>
+            </ul>
+          </li>
+
+          <!-- SRC: resume.education[1] -->
+          <li class="timeline__item reveal">
+            <div class="timeline__item__header">
+              <span class="timeline__role">Class XII — 86.6%</span>
+              <span class="timeline__org">Sowdambikaa Higher Secondary School</span>
+              <time class="timeline__dates" datetime="2022/2023">2022 – 2023</time>
+            </div>
+          </li>
+
+        </ol>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         04 · SKILLS
+         ================================================================== -->
+    <!-- SRC: resume.skills -->
+    <section class="section cv-auto" id="skills" aria-labelledby="skills-heading">
+      <div class="wrap">
+
+        <div class="section__eyebrow">
+          <span class="label">04 / Skills</span>
+        </div>
+        <h2 class="section__heading" id="skills-heading">Capabilities</h2>
+
+        <ul class="skills-grid" aria-label="Skill capability groups">
+
+          <!-- SRC: resume.skills[LLMs & GenAI] -->
+          <li class="skill-group reveal">
+            <h3 class="skill-group__heading">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              LLMs & Generative AI
+            </h3>
+            <p class="skill-group__tools">
+              LLMs, API Integration, RAG, LangChain, LangGraph, LangSmith, Google ADK
+            </p>
+            <div class="skill-group__used-in">
+              <span class="skill-group__used-label">Used in:</span>
+              <a href="projects/floatchat.html" class="skill-group__project-link">FloatChat</a>
+              <a href="projects/syllabex.html"  class="skill-group__project-link">Syllabex</a>
+              <a href="projects/mindmate.html"  class="skill-group__project-link">MindMate</a>
+            </div>
+          </li>
+
+          <!-- SRC: resume.skills[Agentic AI & MCP] -->
+          <li class="skill-group reveal">
+            <h3 class="skill-group__heading">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <rect x="2" y="6" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="10" y="6" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="6" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M6 3h-2v3M10 3h2v3M4 8h2v3h4v-3h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+              Agentic AI & MCP
+            </h3>
+            <p class="skill-group__tools">
+              Model Context Protocol, Multi-agent orchestration, Google ADK, LangGraph agents, Tool integration
+            </p>
+            <div class="skill-group__used-in">
+              <span class="skill-group__used-label">Used in:</span>
+              <a href="projects/floatchat.html" class="skill-group__project-link">FloatChat</a>
+              <a href="projects/sewasetu.html"  class="skill-group__project-link">SewaSetu</a>
+            </div>
+          </li>
+
+          <!-- SRC: resume.skills[ML/DL] -->
+          <li class="skill-group reveal">
+            <h3 class="skill-group__heading">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M2 12L6 6l3 4 2-3 3 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Machine Learning & Deep Learning
+            </h3>
+            <p class="skill-group__tools">
+              Scikit-learn, PyTorch, TensorFlow, Probability, Statistics, ML Algorithms,
+              Feature Engineering, Model Evaluation, LLM Evaluation (DeepEval), RAGAS
+            </p>
+            <div class="skill-group__used-in">
+              <span class="skill-group__used-label">Used in:</span>
+              <a href="projects/mindmate.html" class="skill-group__project-link">MindMate</a>
+              <span class="skill-group__project-link" style="color:var(--muted);">Brain Tumor</span>
+            </div>
+          </li>
+
+          <!-- SRC: resume.skills[Data & Vector Stores] -->
+          <li class="skill-group reveal">
+            <h3 class="skill-group__heading">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <ellipse cx="8" cy="4" rx="6" ry="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 4v4c0 1.1 2.7 2 6 2s6-.9 6-2V4" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M2 8v4c0 1.1 2.7 2 6 2s6-.9 6-2V8" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+              Data & Vector Stores
+            </h3>
+            <p class="skill-group__tools">
+              FAISS, Pinecone, PostgreSQL, MySQL, NumPy, Pandas, MongoDB
+            </p>
+            <div class="skill-group__used-in">
+              <span class="skill-group__used-label">Used in:</span>
+              <a href="projects/floatchat.html" class="skill-group__project-link">FloatChat</a>
+              <a href="projects/mindmate.html"  class="skill-group__project-link">MindMate</a>
+              <a href="projects/sewasetu.html"  class="skill-group__project-link">SewaSetu</a>
+            </div>
+          </li>
+
+          <!-- SRC: resume.skills[AI Evaluation] -->
+          <li class="skill-group reveal">
+            <h3 class="skill-group__heading">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M13 4L6 11 3 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              AI Evaluation & Observability
+            </h3>
+            <p class="skill-group__tools">
+              LangSmith, DeepEval, RAGAS, LLM observability, Gateway, RAG evaluation
+            </p>
+            <div class="skill-group__used-in">
+              <span class="skill-group__used-label">Used in:</span>
+              <a href="projects/floatchat.html" class="skill-group__project-link">FloatChat</a>
+              <a href="projects/mindmate.html"  class="skill-group__project-link">MindMate</a>
+            </div>
+          </li>
+
+          <!-- SRC: resume.skills[Languages & Tools] -->
+          <li class="skill-group reveal">
+            <h3 class="skill-group__heading">
+              <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M5 4L2 8l3 4M11 4l3 4-3 4M8 2v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Languages & Tools
+            </h3>
+            <p class="skill-group__tools">
+              Python, SQL, FastAPI, Flask, Git, GitHub, Docker, VSCode, Google Colab
+            </p>
+            <div class="skill-group__used-in">
+              <span class="skill-group__used-label">Used in:</span>
+              <span style="font-size:var(--text-xs);color:var(--muted);">All projects</span>
+            </div>
+          </li>
+
+        </ul>
+
+        <!-- Pattern G: Certifications scroll-snap rail -->
+        <!-- SRC: resume.certifications -->
+        <div style="margin-block-start: var(--sp-16);">
+          <div class="section__eyebrow" style="margin-block-end:var(--sp-6);">
+            <span class="label">Certifications</span>
+          </div>
+          <ul class="cert-rail"
+              role="region"
+              aria-label="Certifications"
+              tabindex="0">
+            <li class="cert-card">
+              <span class="cert-card__issuer">freeCodeCamp</span>
+              <span class="cert-card__name">Data Analysis with Python</span>
+              <time class="cert-card__year" datetime="2025">2025</time>
+            </li>
+            <li class="cert-card">
+              <span class="cert-card__issuer">TutorialsPoint</span>
+              <span class="cert-card__name">Practical Machine Learning Bootcamp with Real World Projects</span>
+              <time class="cert-card__year" datetime="2025">2025</time>
+            </li>
+            <li class="cert-card">
+              <span class="cert-card__issuer">NVIDIA</span>
+              <span class="cert-card__name">Fundamentals of Deep Learning</span>
+              <time class="cert-card__year" datetime="2025">2025</time>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         05 · ABOUT
+         ================================================================== -->
+    <!-- SRC: resume.summary + resume.achievements (human detail) -->
+    <section class="section cv-auto" id="about" aria-labelledby="about-heading">
+      <div class="wrap">
+
+        <div class="section__eyebrow">
+          <span class="label">05 / About</span>
+        </div>
+        <h2 class="section__heading" id="about-heading">About me</h2>
+
+        <div class="layout-sidebar">
+          <div class="prose">
+            <!-- SRC: resume.summary, 90-120 words, first-person, concrete -->
+            <p>
+              I'm an Artificial Intelligence and Data Science undergraduate at
+              Kongunadu College of Engineering and Technology, Trichy, graduating
+              in 2027 with a CGPA of 8.32. My work centres on building LLM
+              applications, RAG pipelines, and agentic systems that make complex
+              data accessible to real users.
+            </p>
+            <p>
+              I've shipped production-oriented AI at DigiDARA Technologies, where
+              I built MindMate — a personalized mental-health agent combining
+              semantic retrieval and agentic workflows. Across 10+ national
+              competitions, I've won five hackathons, including 1st Runner-Up at
+              CMR Hackfest 3.0 (₹60,000 prize) and a Finalist spot at a joint
+              VIT Bhopal × Johns Hopkins University health hackathon.
+            </p>
+            <p>
+              When I'm not building AI systems, I'm reverse-engineering why
+              they fail — which turns out to be the more useful skill.
+            </p>
+          </div>
+
+          <!-- SRC: resume.photo — G:\WhatsApp Image 2026-08-19 at 17.41.45-Photoroom.png -->
+          <!-- Perf: portrait is below fold so loading="lazy" is correct here -->
+          <!-- TODO(resume.photo): Convert to AVIF/WebP for best performance — see README for commands -->
+          <figure style="
+              aspect-ratio: 3/4;
+              border: 1px solid var(--border);
+              border-radius: var(--radius-lg);
+              overflow: hidden;
+              max-inline-size: 20rem;
+            ">
+            <img
+              src="assets/img/portrait.png"
+              alt="Surya M — AI Engineer, smiling, Trichy"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              style="inline-size:100%;block-size:100%;object-fit:cover;"
+            >
+          </figure>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         06 · CONTACT
+         ================================================================== -->
+    <!-- SRC: resume.contact.email, resume.links -->
+    <section class="section cv-auto" id="contact" aria-labelledby="contact-heading">
+      <div class="wrap">
+
+        <div class="section__eyebrow">
+          <span class="label">06 / Contact</span>
+        </div>
+
+        <h2 class="section__heading" id="contact-heading">
+          Let's build something together.
+        </h2>
+
+        <!-- Currently open to -->
+        <!-- SRC: resume.summary → "Seeking opportunities to contribute as an AI Engineer" -->
+        <p style="font-size:var(--text-lg);color:var(--muted);margin-block-end:var(--sp-8);max-inline-size:48ch;">
+          Currently open to <strong style="color:var(--text)">AI Engineer, ML Engineer, and Generative AI internship</strong> opportunities.
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:var(--sp-4);align-items:center;margin-block-end:var(--sp-10);">
+          <!-- SRC: resume.contact.email -->
+          <a href="mailto:aitech.surya24@gmail.com"
+             class="btn btn--primary"
+             aria-label="Send email to Surya M">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            aitech.surya24@gmail.com
+          </a>
+
+          <!-- SRC: resume.links.linkedin -->
+          <a href="https://www.linkedin.com/in/surya-m-ai/"
+             class="btn btn--ghost"
+             rel="noopener noreferrer"
+             aria-label="Surya M on LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M1.5 5h3v9.5h-3V5zM3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM6 5h2.9v1.4h.04C9.44 5.56 10.44 5 11.7 5c3.07 0 3.64 2.02 3.64 4.65V14.5h-3V10.3c0-1 0-2.28-1.39-2.28-1.4 0-1.61 1.08-1.61 2.2V14.5H6V5z"/>
+            </svg>
+            LinkedIn
+          </a>
+
+          <!-- SRC: resume.links.github -->
+          <a href="https://github.com/M-surya03"
+             class="btn btn--ghost"
+             rel="noopener noreferrer"
+             aria-label="Surya M on GitHub">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 1C4.14 1 1 4.14 1 8c0 3.08 2 5.71 4.76 6.63.35.06.48-.15.48-.33 0-.16-.01-.69-.01-1.25-1.73.32-2.2-.42-2.34-.8-.08-.2-.42-.8-.72-.96-.25-.13-.6-.45-.01-.46.56-.01.96.52 1.09.73.64 1.07 1.66.77 2.07.59.06-.46.25-.77.45-.95-1.58-.18-3.23-.79-3.23-3.51 0-.77.28-1.41.73-1.9-.07-.18-.32-.9.07-1.88 0 0 .6-.19 1.95.73A6.8 6.8 0 0 1 8 5.84c.6.003 1.2.08 1.76.23 1.35-.92 1.95-.73 1.95-.73.39.98.14 1.7.07 1.88.45.49.73 1.12.73 1.9 0 2.73-1.66 3.33-3.24 3.51.26.22.48.65.48 1.31 0 .95-.01 1.71-.01 1.95 0 .18.13.4.48.33A7.01 7.01 0 0 0 15 8C15 4.14 11.86 1 8 1z"/>
+            </svg>
+            GitHub
+          </a>
+
+          <!-- Résumé download -->
+          <a href="assets/Surya_M_1.pdf"
+             class="btn btn--ghost"
+             download
+             aria-label="Download Surya M's résumé PDF">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 12h10M8 2v8M5 7l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Résumé PDF
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap site-footer__inner">
+      <p class="site-footer__copy">
+        &copy; <time datetime="2026">2026</time> <strong>Surya M</strong>.
+        Hand-crafted HTML &amp; CSS — zero JS, zero frameworks.
+      </p>
+      <span class="site-footer__meta">
+        Last updated: <time datetime="2026-11">November 2026</time>
+      </span>
+      <a href="#top" class="site-footer__back" aria-label="Back to top of page">
+        ↑ Back to top
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
